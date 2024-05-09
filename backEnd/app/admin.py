@@ -4,4 +4,3 @@ from .models import *
 
 admin.site.register(Alumnos)
 admin.site.register(Documentos)
-
