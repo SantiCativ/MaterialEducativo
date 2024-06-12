@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework.permissions import *
 from .serializer import *
@@ -19,6 +20,19 @@ from rest_framework import status
     
 class CreateUserController(generics.CreateAPIView):
     serializer_class=CreateUserSerializer
+    
+    #este metodo create pertenece ala vista y lo sobreescribo para que me imprima los errores que suceden
+    #el serializador tiene su propio metodo create, no son el mismo, este solo pertenece ala vista CreateApiview
+    def create(self, request, *args, **kwargs):
+        print("Datos recibidos:", request.data)
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=False)
+        if not serializer.is_valid():
+            print("Errores de validación:", serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
     
 class UpdatedUserController(generics.UpdateAPIView):#esta vista se usara para que los usuarios editen su perfil
     queryset = Usuarios.objects.all()

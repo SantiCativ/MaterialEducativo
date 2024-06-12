@@ -1,0 +1,47 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box; /* Incluye el borde y el padding dentro de la altura y el ancho */
+}
+
+.box {
+  padding: 20px; /* Relleno interno para la caja */
+  width: 100%;
+  max-width: 500px; /* Ancho máximo de la caja */
+}
+
+/* Centrar el título */
+.box header {
+  display: flex;
+  justify-content: center;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .box {
+    padding: 15px; /* Ajuste del padding para pantallas pequeñas */
+  }
+
+  .label, .input, .button {
+    font-size: 14px; /* Ajuste del tamaño de fuente para pantallas pequeñas */
+  }
+}
+
+/* Media query para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .box {
+    padding: 10px; /* Ajuste adicional del padding para pantallas muy pequeñas */
+  }
+
+  .label, .input, .button {
+    font-size: 12px; /* Ajuste adicional del tamaño de fuente para pantallas muy pequeñas */
+  }
+}

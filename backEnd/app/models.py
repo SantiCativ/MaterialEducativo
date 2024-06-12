@@ -17,7 +17,7 @@ class Usuarios(models.Model):
     nombre=models.CharField(max_length=50)
     email=models.EmailField(max_length=100)
     foto=models.ImageField(null=True,blank=True,upload_to=GetRutaField)
-    contraseña= models.CharField(max_length=100)
+    contrasenia= models.CharField(max_length=100)
     certificado= models.FileField(null=False,blank=False,upload_to=GetRutaField)
     estado = models.CharField(max_length=20, choices=(
         (1, 'Pendiente'),
