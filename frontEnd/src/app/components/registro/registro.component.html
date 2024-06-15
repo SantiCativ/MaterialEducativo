@@ -4,26 +4,29 @@
       <h1 class="title">Registro de Usuario</h1>
     </header>
     <br>
-    <form (ngSubmit)="RegisterButton()" #registroForm="ngForm">
+    <form (ngSubmit)="Registro()" #registroForm="ngForm">
       <fieldset>
         <div class="field">
           <label class="label">Nombre</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Ingresa tu nombre" [(ngModel)]="user.nombre" name="nombre" required>
+            <input class="input" type="text" placeholder="Ingresa tu nombre" [(ngModel)]="user.nombre" name="nombre"
+              required>
           </div>
         </div>
 
         <div class="field">
           <label class="label">Email</label>
           <div class="control">
-            <input class="input" type="email" placeholder="Ingresa tu email" [(ngModel)]="user.email" name="email" required>
+            <input class="input" type="email" placeholder="Ingresa tu email" [(ngModel)]="user.email" name="email"
+              required>
           </div>
         </div>
 
         <div class="field">
           <label class="label">Contraseña</label>
           <div class="control">
-            <input class="input" type="password" placeholder="Ingresa tu contraseña" [(ngModel)]="user.contrasenia" name="contraseña" required>
+            <input class="input" type="password" placeholder="Ingresa tu contraseña" [(ngModel)]="user.contrasenia"
+              name="contraseña" required>
           </div>
         </div>
 
@@ -47,10 +50,10 @@
         <br>
 
         <div class="field">
-          <div class="control">
-            <button class="button is-primary" type="submit">Registrar</button>
+          <div class="boton-container">
+            <button class="button is-primary" type="submit" >Registrar</button>
           </div>
-        </div>        
+        </div>
       </fieldset>
     </form>
   </section>

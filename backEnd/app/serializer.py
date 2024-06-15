@@ -16,8 +16,9 @@ class CreateUserSerializer(serializers.ModelSerializer):
         validated_data['contrasenia']=self.convert_hash_password(validated_data['contrasenia'])#obtengo un hash de la contraseña
         usuario=Usuarios.objects.create(
             nombre=validated_data['nombre'],
-            contraseña=validated_data['contrasenia'],
+            contrasenia=validated_data['contrasenia'],
             certificado=validated_data['certificado'],
+            email=validated_data['email'],
             estado='Pendiente', 
             rol='Estudiante'  
             )

@@ -30,9 +30,10 @@ class CreateUserController(generics.CreateAPIView):
         if not serializer.is_valid():
             print("Errores de validación:", serializer.errors)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        #ste método llama internamente al método create del serializer, creando así el usuario en la base de datos.
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response({'message': 'Usuario registrado exitosamente.'},status=status.HTTP_201_CREATED, headers=headers)
     
 class UpdatedUserController(generics.UpdateAPIView):#esta vista se usara para que los usuarios editen su perfil
     queryset = Usuarios.objects.all()
