@@ -4,30 +4,31 @@
       <h1 class="title">Registro de Usuario</h1>
     </header>
     <br>
-    <form (ngSubmit)="Registro()" #registroForm="ngForm">
+    <form (ngSubmit)="Registro(registroForm)" #registroForm="ngForm">
       <fieldset>
         <div class="field">
           <label class="label">Nombre</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Ingresa tu nombre" [(ngModel)]="user.nombre" name="nombre"
-              required>
+            <input class="input" type="text" placeholder="Ingresa tu nombre" [(ngModel)]="user.nombre" name="nombre" #nombre="ngModel" required>
           </div>
+          <!-- el touched es una propiedad que se asigna cuando hacemos el registro de esa manera evitamos que muestre el cartel antes de que el usuario haga click en el campo -->
+          <p class="help is-danger" *ngIf="nombre.invalid && nombre.touched">El nombre es requerido</p>
         </div>
 
         <div class="field">
           <label class="label">Email</label>
           <div class="control">
-            <input class="input" type="email" placeholder="Ingresa tu email" [(ngModel)]="user.email" name="email"
-              required>
+            <input class="input" type="email" placeholder="Ingresa tu email" [(ngModel)]="user.email" name="email" #email="ngModel" required>
           </div>
+          <p class="help is-danger" *ngIf="email.invalid && email.touched">El email es requerido</p>
         </div>
 
         <div class="field">
           <label class="label">Contraseña</label>
           <div class="control">
-            <input class="input" type="password" placeholder="Ingresa tu contraseña" [(ngModel)]="user.contrasenia"
-              name="contraseña" required>
+            <input class="input" type="password" placeholder="Ingresa tu contraseña" [(ngModel)]="user.contrasenia" name="contrasenia" #contrasenia="ngModel" required>
           </div>
+          <p class="help is-danger" *ngIf="contrasenia.invalid && contrasenia.touched">La contraseña es requerida</p>
         </div>
 
         <div class="field">
@@ -35,7 +36,7 @@
           <div class="control">
             <div class="file has-name">
               <label class="file-label">
-                <input class="file-input" type="file" name="certificado" (change)="SelectFile($event)" required />
+                <input class="file-input" type="file" name="certificado" (change)="SelectFile($event)"/>
                 <span class="file-cta">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>
@@ -46,12 +47,13 @@
               </label>
             </div>
           </div>
+          <p class="help is-danger" *ngIf="certificadoError">El certificado es requerido</p>
         </div>
         <br>
 
         <div class="field">
           <div class="boton-container">
-            <button class="button is-primary" type="submit" >Registrar</button>
+            <button class="button is-primary" type="submit">Registrar</button>
           </div>
         </div>
       </fieldset>

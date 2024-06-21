@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';//no se usa pero que quede por si acaso
 import { ServiceService } from 'src/app/services/service.service';
 import { AlertService } from 'src/app/services/alertas/alert.service';
-
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -15,8 +15,10 @@ export class RegistroComponent implements OnInit {
     nombre: '',
     email: '',
     contrasenia: '',
-    certificado: null as File | null //no entiendo muy bien esto, pero es la unica forma en que anda
+    certificado: null as File | null
   };
+
+  certificadoError = false;
 
   constructor(
     private _Materialservice: ServiceService,
@@ -26,39 +28,50 @@ export class RegistroComponent implements OnInit {
 
   }
 
-  SelectFile(event: any)//este evento se activa cuando se selecciona un archivo en el campo certificado
-  {
-    const file = event.target.files[0];//obtiene el certificado que se haya elegido y se lo asigna a file
-    if (file && file.type === 'application/pdf') {//verifica que sea un archivo PDF
+  SelectFile(event: any) {
+    const file = event.target.files[0];
+    if (file && file.type === 'application/pdf') {
       this.user.certificado = file;
-    } else
+      this.certificadoError = false;
+    } else {
+      this.user.certificado = null;
+      this.certificadoError = true;
       this._alertService.error('Selecciona un archivo PDF y no haga perder tiempo');
-
+    }
   }
 
-  Registro()//este metodo se ejecuta cuando se oprime el boton registrar
-  {
-    if (!this.user.certificado)// verifica si se cargo un archivo
-    {
-      alert('Por favor, carga un archivo PDF');
-      return;//detiene la ejecucion del metodo y no sigue con las siguientes lineas de codigo
+  Registro(form: NgForm) {
+
+   //pregunto por separado las validaciones ya que ng model no se puede enlazar con un input de tipo file. Si algunos de los campos no se completo entra a la funcion
+    if (form.invalid || !this.user.certificado) {
+      //Basicamente recorremos todos los controles y seteamos que fueron tocados, de esta manera el cartel se va a mostrar cuando el usuario haga el registro y no antes.
+      Object.keys(form.controls).forEach(field => {
+        const control = form.control.get(field);
+        control?.markAsTouched({ onlySelf: true });
+      });
+
+      //verifico el certificado, necesario esta comprobacion porque no sabemos si entramos a la funcion porque el usuario ingreso el nombre,email,contraseña o por el certificado
+      if (!this.user.certificado) {
+        this.certificadoError = true;
+      }
+
+      //retornamos, ya que el formulario fue invalido
+      return;
     }
 
-    //aqui creo el formdata que se enviara al backend en django, formdata permite enviar archivos pdf por eso lo uso
     const dataUser = new FormData();
-    dataUser.append('nombre', this.user.nombre);//agrego el campo al dataUser
+    dataUser.append('nombre', this.user.nombre);
     dataUser.append('email', this.user.email);
     dataUser.append('contrasenia', this.user.contrasenia);
     dataUser.append('certificado', this.user.certificado, this.user.certificado.name);
 
-
     this._Materialservice.registrarUsuario(dataUser).subscribe((response: any) => {
-        console.log('Registro exitoso', response);
-        this._alertService.success('Usuario registrado exitosamente!');
-      }, error => {
-        this._alertService.error('Ocurrió un error.');
-        console.error('Error en el registro', error);
-      });
+      console.log('Registro exitoso', response);
+      this._alertService.success('Usuario registrado exitosamente!');
+      //reedirigir a por ejemplo la pantalla principal
+    }, error => {
+      this._alertService.error('Ocurrió un error.');
+      console.error('Error en el registro', error);
+    });
   }
-
 }

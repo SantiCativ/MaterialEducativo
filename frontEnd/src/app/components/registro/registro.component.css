@@ -62,3 +62,13 @@ body {
     /* Ajuste adicional del tamaño de fuente para pantallas muy pequeñas */
   }
 }
+
+.input.ng-invalid.ng-touched,
+.file-input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.help.is-danger {
+  color: red;
+}
+
