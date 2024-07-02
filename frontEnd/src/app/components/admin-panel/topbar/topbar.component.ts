@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./topbar.component.css']
 })
 export class TopbarComponent {
-
 }
