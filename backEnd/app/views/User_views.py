@@ -2,15 +2,11 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
-from .serializer import *
-from .models import *
+from app.serializers.User_serializer import *
+from app.models import Usuarios
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-
-
-
-
 
 # USUARIOS
 #para cruds basicos
@@ -53,7 +49,6 @@ class DeleteUserController(generics.DestroyAPIView):
         }, status=status.HTTP_204_NO_CONTENT)
 
 
-    
 class GetUser(generics.RetrieveAPIView):
     queryset=Usuarios.objects.all()
     serializer_class=UsuariosSerializers
@@ -61,6 +56,8 @@ class GetUser(generics.RetrieveAPIView):
 class ListUsersController(generics.ListAPIView):
     queryset=Usuarios.objects.all()
     serializer_class=UsuariosSerializers
+    
+
    
 
     
