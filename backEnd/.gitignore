@@ -1,0 +1,25 @@
+# Python
+*.py[cod]
+*$py.class
+media
+
+# Entorno virtual
+env/
+venv/
+
+# Archivos de configuración
+*.env
+*.secret
+
+# Archivos de base de datos
+*.sqlite3
+*.db
+*.dbm
+
+# Archivos de caché
+__pycache__/
+*.pyc
+*.pyo
+
+# Otros
+.DS_Store
