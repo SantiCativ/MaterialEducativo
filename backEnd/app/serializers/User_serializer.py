@@ -6,7 +6,7 @@ from app.models import Usuarios
 class GetUsers(serializers.ModelSerializer):
     class Meta:
         model = Usuarios
-        fields = ["id", "nombre", "email", "certificado", "estado"]
+        fields = ["id", "username", "email", "certificado", "estado"]
   
 class CreateUser(serializers.ModelSerializer):
     class Meta:#sirve para persozaliar el json o diccionario que genera el serializador
