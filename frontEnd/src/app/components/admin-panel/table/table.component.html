@@ -4,17 +4,26 @@
       <th *ngFor="let column of columns">{{ column }}</th>
     </tr>
   </thead>
-
   <tbody>
-    <tr *ngFor="let info of data">
-    
-      <td>{{ info.estado }}</td>
-      <td>{{ info.nombre }}</td>
-      <td>{{info.certificado}}</td>
-      <td>
-        <button class="button is-link is-rounded">Aprobar</button>
-        <button class="button is-danger is-rounded">Rechazar</button>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let column of columns">
+        <ng-container *ngIf="column === 'certificado'; else defaultContent">
+          <!-- Hacer otra cosa si la columna es 'certificado' -->
+          <!-- <i class="far fa-eye fa-lg" style="color: #21508c;" (click)="openModal(row[column])"></i> -->
+           <a [href]="row[column]"> certificado</a>
+        </ng-container>
+        <ng-template #defaultContent>
+          {{ row[column] }}
+        </ng-template>
       </td>
     </tr>
   </tbody>
 </table>
+
+
+<!-- Modal -->
+<div class="modal" [class.is-active]="isModalActive">
+  <div class="modal-background" (click)="closeModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close is-large" aria-label="close" (click)="closeModal()"></button>
+  </div>

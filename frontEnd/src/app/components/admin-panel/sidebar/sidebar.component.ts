@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -7,4 +6,13 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  @Output() tableSelectionChange = new EventEmitter<string>();
+
+  constructor() { }
+
+  selectTable(tableName: string): void {
+    this.tableSelectionChange.emit(tableName);
+  }
 }
+
+

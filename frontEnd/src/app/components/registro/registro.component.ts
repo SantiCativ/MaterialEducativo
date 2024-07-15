@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';//no se usa pero que quede por si acaso
-import { ServiceService } from 'src/app/services/service.service';
+import { MaterialService } from 'src/app/services/service.service';
 import { AlertService } from 'src/app/services/alertas/alert.service';
 import { NgForm } from '@angular/forms';
 
@@ -21,7 +21,7 @@ export class RegistroComponent implements OnInit {
   certificadoError = false;
 
   constructor(
-    private _Materialservice: ServiceService,
+    private _Materialservice:MaterialService,
     private _alertService: AlertService) { }
 
   ngOnInit(): void {

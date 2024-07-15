@@ -4,10 +4,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module'; 
-
-
-
+import { AppRoutingModule } from './app-routing.module';
 //componentes
 import { HomeComponent } from './components/home/home.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
@@ -16,21 +13,25 @@ import { SidebarComponent } from './components/admin-panel/sidebar/sidebar.compo
 import { TableComponent } from './components/admin-panel/table/table.component';
 
 @NgModule({
+  
   declarations: [
+    
     AppComponent,
     HomeComponent,
     RegistroComponent,
     AdminPanelComponent,
     TopbarComponent,
     SidebarComponent,
-    TableComponent
+    TableComponent,
+  
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    
+   
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

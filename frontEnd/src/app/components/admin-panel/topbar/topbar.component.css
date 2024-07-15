@@ -1,0 +1,10 @@
+.navbar {
+    min-height: var(--bulma-navbar-height);
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-container{
+    display: flex;
+    gap:60px;
+}

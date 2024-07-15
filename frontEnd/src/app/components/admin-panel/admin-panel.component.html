@@ -1,14 +1,14 @@
 
 <section class="columns is-gapless">
   <section class="column is-one-fifth">
-    <app-sidebar></app-sidebar>
+    <app-sidebar (tableSelectionChange)="onTableSelectionChange($event)"></app-sidebar>
   </section>
   <section class="column">
     <div class="box">
-      <app-topbar></app-topbar>
+      <app-topbar [data]="data" (filterChanged)="onFilterChanged($event)" ></app-topbar>
     </div>
     <div class="box">
-      <app-table></app-table>
+      <app-table [columns]="columns" [data]="filteredData"></app-table>
     </div>
   </section>
 </section>

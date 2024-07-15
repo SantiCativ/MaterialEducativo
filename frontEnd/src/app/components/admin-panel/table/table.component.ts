@@ -1,18 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent {
-  //genero dinamicamente los datos para la tabla, data es una lista que contiene diccionarios
-  //SOLO SIRVE PARA PROBAR QUE LA TABLA ES DINAMICA Y NO ESTATICA
-  data=[
-    {estado:"activo", nombre: "Juan Pérez", certificado: "certificado-juan_perez.pdf" },
-    {estado:"pendiente", nombre: "María Gómez", certificado: "certificado-maria_gomez.pdf" },
-    {estado:"rechazado", nombre: "Carlos Rodríguez", certificado: "certificado-carlos_rodriguez.pdf" }];
-  
-  columns=['Estado','Nombre','Certificado de Alumno Regular','Acción'];
 
+
+export class TableComponent {
+  isModalActive: boolean = false;
+  selectedCertificateUrl = "";
+
+  pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
+
+  @Input() columns: string[] = [];
+  @Input() data: any[] = [];
+
+  constructor() {}
+
+  openModal(certificadoUrl: string): void {
+    this.selectedCertificateUrl = certificadoUrl;
+    this.isModalActive = true;
+    console.log("contenido del modal:", this.selectedCertificateUrl);
+  }
+
+  closeModal(): void {
+    this.isModalActive = false;
+    this.selectedCertificateUrl= '';
+  }
 }
