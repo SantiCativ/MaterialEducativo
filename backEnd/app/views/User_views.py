@@ -1,14 +1,12 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import generics
-from rest_framework.permissions import *
-from .serializer import *
-from .models import *
+from rest_framework.permissions import IsAuthenticated
+from app.serializers.User_serializer import *
+from app.models import Usuarios
 from django.http import HttpResponse
 from rest_framework import status
-from django.views.decorators.clickjacking import xframe_options_exempt
-
-
+from rest_framework.authtoken.models import Token
 
 # USUARIOS
 # para cruds basicos
@@ -71,3 +69,15 @@ class GetUsers(generics.ListAPIView):
     queryset = Usuarios.objects.all().order_by('-id')
     serializer_class = GetUsers
     # permission_classes=[IsAdminUser]
+    queryset=Usuarios.objects.all()
+    serializer_class=Usuarios
+    
+    
+
+   
+
+    
+    
+
+
+

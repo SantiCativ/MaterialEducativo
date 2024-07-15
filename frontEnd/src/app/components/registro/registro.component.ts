@@ -12,9 +12,9 @@ import { NgForm } from '@angular/forms';
 export class RegistroComponent implements OnInit {
   //user es un objeto que declaro, este objeto tendra los campos 4 campos que defino, uso este objeto para luego cargarlo al form
   user = {
-    nombre: '',
+    username: '',
     email: '',
-    contrasenia: '',
+    password: '',
     certificado: null as File | null
   };
 
@@ -60,18 +60,14 @@ export class RegistroComponent implements OnInit {
     }
 
     const dataUser = new FormData();
-    dataUser.append('nombre', this.user.nombre);
+    dataUser.append('username', this.user.username);
     dataUser.append('email', this.user.email);
-    dataUser.append('contrasenia', this.user.contrasenia);
+    dataUser.append('password', this.user.password);
     dataUser.append('certificado', this.user.certificado, this.user.certificado.name);
 
-    this._Materialservice.registrarUsuario(dataUser).subscribe((response: any) => {
-      console.log('Registro exitoso', response);
-      this._alertService.success('Usuario registrado exitosamente!');
-      //reedirigir a por ejemplo la pantalla principal
-    }, error => {
-      this._alertService.error('Ocurrió un error.');
-      console.error('Error en el registro', error);
-    });
-  }
+    this._Materialservice.registrarUsuario(dataUser).subscribe({
+      next: ()=> this._alertService.success('Registro exitoso'),
+      error: (err)=> this._alertService.error('Registro fallido')
+  })
+ }
 }

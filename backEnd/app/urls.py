@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
-from app import views
-from .views import *
+from app.views import *
+from rest_framework_simplejwt.views import (TokenObtainPairView,TokenRefreshView,)
 
 
 router= routers.DefaultRouter()
@@ -13,4 +13,8 @@ urlpatterns= [
     path('delete/<int:pk>/', DeleteUser.as_view()), 
     path('user/<int:pk>/', GetUser.as_view()), 
     path('users/', GetUsers.as_view()), 
+    path('list/', ListUsersController.as_view()), 
+    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),#esta vista recibe el usuario y contraseña y si
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
     ]

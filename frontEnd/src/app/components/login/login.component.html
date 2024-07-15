@@ -1,0 +1,36 @@
+<div class="container">
+    <section class="box">
+      <header>
+        <h1 class="title">login</h1>
+      </header>
+      <br>
+      <form (ngSubmit)="Login()" #registroForm="ngForm">
+        <fieldset>
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Ingresa tu nombre" [(ngModel)]="username" name="nombre" #nombre="ngModel" required>
+            </div>
+            <!-- el touched es una propiedad que se asigna cuando hacemos el registro de esa manera evitamos que muestre el cartel antes de que el usuario haga click en el campo -->
+            <p class="help is-danger" *ngIf="nombre.invalid && nombre.touched">El nombre es requerido</p>
+          </div>
+  
+          <div class="field">
+            <label class="label">Contraseña</label>
+            <div class="control">
+              <input class="input" type="password" placeholder="Ingresa tu contraseña" [(ngModel)]="password" name="contrasenia" #contrasenia="ngModel" required>
+            </div>
+            <p class="help is-danger" *ngIf="contrasenia.invalid && contrasenia.touched">La contraseña es requerida</p>
+          </div>
+          <br>
+  
+          <div class="field">
+            <div class="boton-container">
+              <button class="button is-primary" type="submit">OK</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+  </div>
+  
