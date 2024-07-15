@@ -9,10 +9,10 @@
         <div class="field">
           <label class="label">Nombre</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Ingresa tu nombre" [(ngModel)]="user.nombre" name="nombre" #nombre="ngModel" required>
+            <input class="input" type="text" placeholder="Ingresa tu nombre" [(ngModel)]="user.username" name="username" #username="ngModel" required>
           </div>
           <!-- el touched es una propiedad que se asigna cuando hacemos el registro de esa manera evitamos que muestre el cartel antes de que el usuario haga click en el campo -->
-          <p class="help is-danger" *ngIf="nombre.invalid && nombre.touched">El nombre es requerido</p>
+          <p class="help is-danger" *ngIf="username.invalid && username.touched">El nombre es requerido</p>
         </div>
 
         <div class="field">
@@ -26,9 +26,9 @@
         <div class="field">
           <label class="label">Contraseña</label>
           <div class="control">
-            <input class="input" type="password" placeholder="Ingresa tu contraseña" [(ngModel)]="user.contrasenia" name="contrasenia" #contrasenia="ngModel" required>
+            <input class="input" type="password" placeholder="Ingresa tu contraseña" [(ngModel)]="user.password" name="password" #password="ngModel" required>
           </div>
-          <p class="help is-danger" *ngIf="contrasenia.invalid && contrasenia.touched">La contraseña es requerida</p>
+          <p class="help is-danger" *ngIf="password.invalid && password.touched">La contraseña es requerida</p>
         </div>
 
         <div class="field">

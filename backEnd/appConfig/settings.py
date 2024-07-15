@@ -40,9 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,9 +82,9 @@ WSGI_APPLICATION = 'appConfig.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'material_educativo',
+        'NAME': 'db_material_educativo',
         'USER': 'postgres',
-        'PASSWORD': 'santiago',
+        'PASSWORD': 'nahuel',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -131,3 +134,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#se usa para la autenticacion
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':
+        (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        )
+}
+
+AUTH_USER_MODEL = 'app.Usuarios'
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',  # Reemplaza con el origen de tu aplicación Angular
+    # Otros orígenes permitidos si es necesario
+]
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'OPTIONS',
+]
