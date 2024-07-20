@@ -11,6 +11,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { TopbarComponent } from './components/admin-panel/topbar/topbar.component';
 import { SidebarComponent } from './components/admin-panel/sidebar/sidebar.component';
 import { TableComponent } from './components/admin-panel/table/table.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   
@@ -23,6 +24,7 @@ import { TableComponent } from './components/admin-panel/table/table.component';
     TopbarComponent,
     SidebarComponent,
     TableComponent,
+    LoginComponent
   
   ],
   imports: [

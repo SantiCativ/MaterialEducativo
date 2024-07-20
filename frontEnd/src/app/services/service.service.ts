@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { Observable,tap,throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,13 @@ export class MaterialService {
 
   constructor(private http: HttpClient, private route:Router) { }
 
-  registrarUsuario(formData: any) {
-    const url=this.url+'/registro/';
-    return this.http.post( url,formData);
+  registrarUsuario(formData: any): Observable<any> {//ESTO ES NUEVO, MANEJO LOS ERRORES EN EL POST
+    const url = this.url + '/registro/';
+    return this.http.post(url, formData).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(error);
+      })
+    );
   }
 
   getUsers(){
@@ -29,7 +34,6 @@ export class MaterialService {
    const url=this.url+'/login/';
    return this.http.post<any>(url,{username,password}).pipe(tap(response=>{
     if(response.access && response.refresh){
-      console.log(response.token)
       this.setTokens(response.access,response.refresh);}
   }
   ));;
