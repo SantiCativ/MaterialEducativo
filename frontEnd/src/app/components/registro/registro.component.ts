@@ -64,10 +64,19 @@ export class RegistroComponent implements OnInit {
     dataUser.append('email', this.user.email);
     dataUser.append('password', this.user.password);
     dataUser.append('certificado', this.user.certificado, this.user.certificado.name);
-
     this._Materialservice.registrarUsuario(dataUser).subscribe({
-      next: ()=> this._alertService.success('Registro exitoso'),
-      error: (err)=> this._alertService.error('Registro fallido')
-  })
- }
+      next: () => this._alertService.success('Registro exitoso'),
+      error: (err) => {
+        console.log(err);
+        console.log(err.error.username);
+        if (err.status === 400)
+          if (err.error.username) 
+            this._alertService.error('El usuario ya existe');
+          else if(err.error.email)
+            this._alertService.error('email incorecto');
+        else 
+          this._alertService.error('Registro fallido');
+      }
+    });
+  }
 }

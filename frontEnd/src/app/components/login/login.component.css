@@ -32,43 +32,24 @@ body {
   display: flex;
   justify-content: center;
 }
-
-/* Media query para pantallas más pequeñas */
-@media (max-width: 768px) {
-  .box {
-    padding: 15px;
-    /* Ajuste del padding para pantallas pequeñas */
-  }
-
-  .label,
-  .input,
-  .button {
-    font-size: 14px;
-    /* Ajuste del tamaño de fuente para pantallas pequeñas */
-  }
+.icon-user {
+  font-size: 7rem; /* Ajusta este valor según sea necesario */
+  margin-top: 1rem; /* Espaciado superior */
+  margin-bottom: 1rem; /* Espaciado inferior */
 }
 
-/* Media query para pantallas muy pequeñas */
-@media (max-width: 480px) {
-  .box {
-    padding: 10px;
-    /* Ajuste adicional del padding para pantallas muy pequeñas */
-  }
-
-  .label,
-  .input,
-  .button {
-    font-size: 12px;
-    /* Ajuste adicional del tamaño de fuente para pantallas muy pequeñas */
-  }
+.forgot-password , .guest-login  {
+  color: rgb(66, 66, 66);
+  text-decoration: underline;
+  font-weight: bolder ; /* Hace que la letra sea más ancha */
+  font-size: 1.0rem; /* Aumenta el tamaño de la fuente */
+  padding: 5px 10px; /* Añade espaciado interno */
 }
 
-.input.ng-invalid.ng-touched,
-.file-input.ng-invalid.ng-touched {
-  border-color: red;
+.field.is-grouped{
+  display: flex;
+  justify-content: space-between;
 }
 
-.help.is-danger {
-  color: red;
-}
+
 
