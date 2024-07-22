@@ -69,8 +69,6 @@ class GetUsers(generics.ListAPIView):
     queryset = Usuarios.objects.all().order_by('-id')
     serializer_class = GetUsers
     # permission_classes=[IsAdminUser]
-    queryset=Usuarios.objects.all()
-    serializer_class=Usuarios
     
     
 

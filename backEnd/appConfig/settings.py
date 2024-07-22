@@ -13,8 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+#ruta del directorio base del proyecto django
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -82,9 +83,9 @@ WSGI_APPLICATION = 'appConfig.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_material_educativo',
+        'NAME': 'material_educativo',
         'USER': 'postgres',
-        'PASSWORD': 'nahuel',
+        'PASSWORD': 'santiago',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -126,9 +127,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
-MEDIA_URL = '/certificados/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#La URL base para servir archivos subidos
+MEDIA_URL = '/media/'
+#La ruta del sistema de archivos donde se almacenarán los archivos subidos.
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT= BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
