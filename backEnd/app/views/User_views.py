@@ -37,12 +37,14 @@ class CreateUser(generics.CreateAPIView):
         )
 
 
-class UpdatedUser(
-    generics.UpdateAPIView
-):  # esta vista se usara para que los usuarios editen su perfil
+class UpdatedUser(generics.UpdateAPIView):
     queryset = Usuarios.objects.all()
-    # permission_classes = [IsAuthenticated] #significa que solo los usuarios que estan autenticados(iniciaron sesion)pueden usar esta vista
     serializer_class = UpdatedUser
+
+
+class UpdatedEstado(generics.UpdateAPIView):
+    queryset = Usuarios.objects.all()
+    serializer_class = UpdatedEstado
 
 
 class DeleteUser(generics.DestroyAPIView):
@@ -61,21 +63,11 @@ class DeleteUser(generics.DestroyAPIView):
 
 class GetUser(generics.RetrieveAPIView):
     queryset = Usuarios.objects.all()
-    serializer_class = Usuarios
+    serializer_class = GetUser
     # permission_classes=[IsAdminUser]
 
 
 class GetUsers(generics.ListAPIView):
-    queryset = Usuarios.objects.all().order_by('-id')
+    queryset = Usuarios.objects.all().order_by("-id")
     serializer_class = GetUsers
     # permission_classes=[IsAdminUser]
-    
-    
-
-   
-
-    
-    
-
-
-

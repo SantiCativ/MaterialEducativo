@@ -4,10 +4,16 @@ from app.models import Usuarios
 
 
 class GetUsers(serializers.ModelSerializer):
+    estado_display = serializers.CharField(source='get_estado_display', read_only=True)
+    class Meta:
+        model = Usuarios
+        fields = ["id", "username", "email", "certificado", "estado", "estado_display"]
+
+class GetUser(serializers.ModelSerializer):
     class Meta:
         model = Usuarios
         fields = ["id", "username", "email", "certificado", "estado"]
-  
+        
 class CreateUser(serializers.ModelSerializer):
     class Meta:#sirve para persozaliar el json o diccionario que genera el serializador
         model=Usuarios
@@ -36,5 +42,9 @@ class UpdatedUser(serializers.ModelSerializer):
 
 # Usuarios.objects.create=crea una instancia de usuario y la guarda en la base de datos
 
+class UpdatedEstado(serializers.ModelSerializer):
+    class Meta:
+        model = Usuarios
+        fields = ['estado']
 
 
