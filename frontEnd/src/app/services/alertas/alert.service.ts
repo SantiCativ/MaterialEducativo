@@ -47,4 +47,23 @@ export class AlertService {
   custom(options: SweetAlertOptions) {
     Swal.fire(options);
   }
+
+
+
+  confirmed(title: string, text?: string): Promise<any> {
+    return Swal.fire({
+      title: title,
+      text: text,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si",
+      cancelButtonText: "No, cancelar!",
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: true
+    });
+  }
 }
+

@@ -1,0 +1,53 @@
+<section class="container">
+  <section class="box">
+    <section class="has-text-centered">
+      <i class="fa-solid fa-circle-user icon-user"></i>
+
+    </section>
+    <header>
+      <h1 class="title">BIENVENIDO</h1>
+    </header>
+    <br>
+    <form (ngSubmit)="Login()" #registroForm="ngForm">
+      <fieldset>
+        <section class="field">
+          <label class="label">Username</label>
+          <section class="control">
+            <input class="input" type="text" placeholder="Ingresa tu nombre" [(ngModel)]="username" name="nombre"
+              #nombre="ngModel" required>
+          </section>
+          <!-- el touched es una propiedad que se asigna cuando hacemos el registro de esa manera evitamos que muestre el cartel antes de que el usuario haga click en el campo -->
+          <p class="help is-danger" *ngIf="nombre.invalid && nombre.touched">El nombre es requerido</p>
+        </section>
+
+        <section class="field">
+          <label class="label">Contraseña</label>
+          <section class="control">
+            <input class="input" type="password" placeholder="Ingresa tu contraseña" [(ngModel)]="password"
+              name="contrasenia" #contrasenia="ngModel" required>
+          </section>
+          <p class="help is-danger" *ngIf="contrasenia.invalid && contrasenia.touched">La contraseña es requerida</p>
+        </section>
+        <br>
+        <section class="field is-grouped">
+          <section class="control">
+            <a href="" class="forgot-password">Olvidé mi contraseña</a>
+          </section>
+          <section class="control">
+            <a href="http://localhost:4200/register" class="guest-login">Registrar</a>
+          </section>
+          <section class="control">
+            <a href="http://localhost:4200/home" class="guest-login">Ingresar como Invitado</a>
+          </section>
+
+        </section>
+        <br>
+        <section class="field">
+          <section class="boton-container">
+            <button class="button is-primary" type="submit">Login</button>
+          </section>
+        </section>
+      </fieldset>
+    </form>
+  </section>
+</section>

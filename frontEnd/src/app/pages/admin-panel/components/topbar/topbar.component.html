@@ -1,0 +1,20 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <section class="navbar-brand">
+    <div class="control has-icons-left">
+      <input class="input" [(ngModel)]="nameAndEmail" (ngModelChange)="filterState(nameAndEmail)" type="text" placeholder="Buscar" />
+      <span class="icon is-small is-left">
+        <i class="fas fa-search"></i>
+      </span>
+    </div>
+  </section>
+  <section class="navbar-item">
+    <div class="button-container">
+      <ng-container *ngIf="table==='Usuarios'">
+        <button  (click)="filterState('')">Todos</button>
+        <button class="button is-info" (click)="filterState('1')">Pendiente</button>
+        <button class="button is-success" (click)="filterState('2')">Aprobados</button>
+        <button class="button is-danger" (click)="filterState('3')">Desaprobados</button>
+      </ng-container>
+    </div>
+  </section>
+</nav>

@@ -1,0 +1,25 @@
+.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+    color: white;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+  }
+
+  .paginador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#1776bd
+  }

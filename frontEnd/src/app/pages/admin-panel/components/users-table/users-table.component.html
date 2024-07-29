@@ -1,0 +1,29 @@
+<table class="table is-fullwidth is-hoverable">
+  <thead>
+
+    <tr>
+      <th>Id</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Certificado</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filteredUsers | paginate: {itemsPerPage:5,currentPage:pagina}">
+      <td>{{user.id}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td><a [href]="user.certificado">Ir</a></td>
+      <td>{{user.estado}}</td>
+      <td> <i class="fa-regular fa-thumbs-up fa-xl" style="color: #40e77b; padding-right: 10px; cursor: pointer;" (click)="updatedState(user.id,'2','Aprobar')"></i>
+        <i class="fa-regular fa-thumbs-down fa-xl" style="color: #d01b1b; padding-left: 10px; cursor: pointer;" (click)="updatedState(user.id,'3','Rechazar')"></i></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="paginador">
+<pagination-controls (pageChange)="pagina=$event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+</div>
