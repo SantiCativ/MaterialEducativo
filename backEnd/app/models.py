@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 # fsCertificates = FileSystemStorage(location='media/certificates')
 # fsPhotos=FileSystemStorage(location='media/photos')
-# fsDocuments=FileSystemStorage(location='media/documents')
+fsDocuments=FileSystemStorage(location='media/documents')
 
 
    
