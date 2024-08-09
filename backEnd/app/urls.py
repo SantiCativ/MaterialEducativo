@@ -8,7 +8,7 @@ router= routers.DefaultRouter()
 #router.register(r'Usuarios',views.UsuariosViewSet)
 urlpatterns= [
     path('',include(router.urls)),
-    path('registro/', CreateUser.as_view(), ), 
+    path('registro/', CreateUser.as_view(),), 
     path('documents_create/',CreateDocument.as_view(),),
     path('update/<int:pk>/',UpdatedUser.as_view()),
     path('update/estado/<int:pk>',UpdatedEstado.as_view()),
@@ -18,4 +18,5 @@ urlpatterns= [
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),#esta vista recibe el usuario y contraseña y si
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('documents/', GetDocuments.as_view()), 
+    path('update/state/<int:pk>',UpdateState.as_view()),
     ]

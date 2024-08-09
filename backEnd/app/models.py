@@ -1,4 +1,4 @@
-from django.db import models
+                                                                                                                                                                                                                                                                                                                                            from django.db import models
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import AbstractUser
 
@@ -35,7 +35,7 @@ class Documentos(models.Model):
     created_date=models.DateField(auto_now=True)
     file=models.FileField(upload_to='documents',null=False,blank=False)
     owner=models.ForeignKey(Usuarios,on_delete=models.CASCADE,related_name='documents') #politica de integridad referencial(VER)
-    state= models.CharField(max_length=20, choices=(#el campo rol podemos borrarlo porque ya esta is_staff que usa django
+                                                                                                                                                                            state= models.CharField(max_length=20, choices=(
         (1, 'visible'),
         (2, 'oculto'),
         

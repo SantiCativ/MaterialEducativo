@@ -1,0 +1,6 @@
+<aside class="menu">
+  <section class="buttons">
+    <button (click)="openModal()" class="button custom-button">Subir Documento</button>
+    <app-upload-document [ModalActivo]="modalActivo" (closeModal)="closeModal()"></app-upload-document>
+  </section>
+</aside>

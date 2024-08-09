@@ -3,18 +3,18 @@ from django.contrib.auth.hashers import make_password
 from app.models import Usuarios
 
 
-class GetUsers(serializers.ModelSerializer):
+class getUsers(serializers.ModelSerializer):
     estado_display = serializers.CharField(source='get_estado_display', read_only=True)
     class Meta:
         model = Usuarios
         fields = ["id", "username", "email", "certificado", "estado", "estado_display"]
 
-class GetUser(serializers.ModelSerializer):
+class getUser(serializers.ModelSerializer):
     class Meta:
         model = Usuarios
         fields = ["id", "username", "email", "certificado", "estado"]
         
-class CreateUser(serializers.ModelSerializer):
+class createUser(serializers.ModelSerializer):
     class Meta:#sirve para persozaliar el json o diccionario que genera el serializador
         model=Usuarios
         fields=['username', 'email','password','certificado']
@@ -35,14 +35,14 @@ class CreateUser(serializers.ModelSerializer):
         return make_password(password)
 #Usuarios.objects.create=crea una instancia de usuario y la guarda en la base de datos
 
-class UpdatedUser(serializers.ModelSerializer):
+class updatedUser(serializers.ModelSerializer):
   class Meta:
       model=Usuarios
       fields=['username', 'password','certificado','email','foto']
 
 # Usuarios.objects.create=crea una instancia de usuario y la guarda en la base de datos
 
-class UpdatedEstado(serializers.ModelSerializer):
+class updatedEstado(serializers.ModelSerializer):
     class Meta:
         model = Usuarios
         fields = ['estado']

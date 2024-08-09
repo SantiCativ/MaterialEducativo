@@ -1,0 +1,30 @@
+/* Asegúrate de que tu archivo CSS esté enlazado correctamente */
+
+.container-principal {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* La altura del contenedor principal ocupará toda la ventana */
+  }
+  
+  .container-navbar {
+    width: 100%;
+  }
+  
+  .container-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  .container-sidebar {
+    width: 250px; /* Puedes ajustar el ancho según tus necesidades */
+    overflow-y: auto; /* Para permitir el scroll si el contenido es más largo que el sidebar */
+  }
+  
+  .main-content {
+    flex: 1;
+    background-color: #8d1818; /* Ejemplo de color de fondo, puedes cambiarlo */
+    padding: 20px; /* Ajusta el padding según tus necesidades */
+    overflow-y: auto; /* Para permitir el scroll si el contenido es más largo que la vista */
+  }
+  

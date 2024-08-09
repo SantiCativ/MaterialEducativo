@@ -16,7 +16,7 @@ from rest_framework.authtoken.models import Token
 
 
 class CreateUser(generics.CreateAPIView):
-    serializer_class = CreateUser
+    serializer_class = createUser
 
     # este metodo create pertenece ala vista y lo sobreescribo para que me imprima los errores que suceden
     # el serializador tiene su propio metodo create, no son el mismo, este solo pertenece ala vista CreateApiview
@@ -39,12 +39,12 @@ class CreateUser(generics.CreateAPIView):
 
 class UpdatedUser(generics.UpdateAPIView):
     queryset = Usuarios.objects.all()
-    serializer_class = UpdatedUser
+    serializer_class = updatedUser
 
 
 class UpdatedEstado(generics.UpdateAPIView):
     queryset = Usuarios.objects.all()
-    serializer_class = UpdatedEstado
+    serializer_class = updatedEstado
 
 
 class DeleteUser(generics.DestroyAPIView):
@@ -63,11 +63,11 @@ class DeleteUser(generics.DestroyAPIView):
 
 class GetUser(generics.RetrieveAPIView):
     queryset = Usuarios.objects.all()
-    serializer_class = GetUser
+    serializer_class = getUser
     # permission_classes=[IsAdminUser]
 
 
 class GetUsers(generics.ListAPIView):
     queryset = Usuarios.objects.all().order_by("-id")
-    serializer_class = GetUsers
+    serializer_class = getUsers
     # permission_classes=[IsAdminUser]
