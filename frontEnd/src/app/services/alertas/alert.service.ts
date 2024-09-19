@@ -47,6 +47,16 @@ export class AlertService {
   custom(options: SweetAlertOptions) {
     Swal.fire(options);
   }
+  
+  customDialog(title:string){
+    return Swal.fire({
+      position: "center",
+      icon: "success",
+      title: title,
+      showConfirmButton: false,
+      timer: 1500
+    });
+  }
 
 
 

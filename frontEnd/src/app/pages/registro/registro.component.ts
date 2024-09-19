@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';//no se usa pero que quede por
 import { MaterialService } from 'src/app/services/service.service';
 import { AlertService } from 'src/app/services/alertas/alert.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,8 +22,9 @@ export class RegistroComponent implements OnInit {
   certificadoError = false;
 
   constructor(
-    private _Materialservice:MaterialService,
-    private _alertService: AlertService) { }
+    private _Materialservice: MaterialService,
+    private _alertService: AlertService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -42,7 +44,7 @@ export class RegistroComponent implements OnInit {
 
   Registro(form: NgForm) {
 
-   //pregunto por separado las validaciones ya que ng model no se puede enlazar con un input de tipo file. Si algunos de los campos no se completo entra a la funcion
+    //pregunto por separado las validaciones ya que ng model no se puede enlazar con un input de tipo file. Si algunos de los campos no se completo entra a la funcion
     if (form.invalid || !this.user.certificado) {
       //Basicamente recorremos todos los controles y seteamos que fueron tocados, de esta manera el cartel se va a mostrar cuando el usuario haga el registro y no antes.
       Object.keys(form.controls).forEach(field => {
@@ -54,7 +56,6 @@ export class RegistroComponent implements OnInit {
       if (!this.user.certificado) {
         this.certificadoError = true;
       }
-
       //retornamos, ya que el formulario fue invalido
       return;
     }
@@ -65,17 +66,17 @@ export class RegistroComponent implements OnInit {
     dataUser.append('password', this.user.password);
     dataUser.append('certificado', this.user.certificado, this.user.certificado.name);
     this._Materialservice.registrarUsuario(dataUser).subscribe({
-      next: () => this._alertService.success('Registro exitoso'),
+      next: () => { this._alertService.customDialog('Registro exitoso').then(() => { this.router.navigate(['/login']); }) },
       error: (err) => {
         console.log(err);
         console.log(err.error.username);
         if (err.status === 400)
-          if (err.error.username) 
+          if (err.error.username)
             this._alertService.error('El usuario ya existe');
-          else if(err.error.email)
+          else if (err.error.email)
             this._alertService.error('email incorecto');
-        else 
-          this._alertService.error('Registro fallido');
+          else
+            this._alertService.error('Registro fallido');
       }
     });
   }

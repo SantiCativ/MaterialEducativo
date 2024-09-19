@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit{
 
   Login():void{
     this._Materialservice.loginUser(this.username,this.password).subscribe({
-      next: ()=> this.router.navigate(['/home']),//si el login fue exitoso me redirecciona a la url home
+      next: ()=> this.router.navigate(['/home']),
       error: ()=> this._alertService.error('Login fallido')
     })
   }
