@@ -15,7 +15,7 @@
       <td>{{ doc.id }}</td>
       <td>{{ doc.title }}</td>
       <td>{{ doc.created_date | date:'shortDate' }}</td>
-      <td><a [href]="doc.file" target="_blank">Ver documento</a></td>
+      <td><a [href]="doc.file">Ver documento</a></td>
       <td>{{ doc.owner.username }}</td>
       <td>{{ doc.state === 1 ? 'Visible' : 'Oculto' }}</td>
       <td>

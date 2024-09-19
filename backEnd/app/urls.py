@@ -19,4 +19,6 @@ urlpatterns= [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('documents/', GetDocuments.as_view()), 
     path('update/state/<int:pk>',UpdateState.as_view()),
+    path('password_reset/', ResetPassword.as_view(), name='password_reset_request'),
+    path('password_reset_confirm/', ResetPasswordConfirm.as_view(),),
     ]

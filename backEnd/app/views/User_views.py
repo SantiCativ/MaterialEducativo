@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+
 from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
@@ -7,12 +7,48 @@ from app.models import Usuarios
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-
+from rest_framework_simplejwt.tokens import RefreshToken
 # USUARIOS
 # para cruds basicos
 # class UsuariosViewSet (viewsets.ModelViewSet):
 #     queryset=Usuarios.objects.all()
 #     serializer_class= UsuariosSerializers
+
+
+
+class ResetPasswordConfirm(generics.GenericAPIView):
+    serializer_class =resetPasswordConfirm
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            return Response({"message": "Contraseña actualizada exitosamente."}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ResetPassword(generics.GenericAPIView):
+    serializer_class=resetPassword
+
+    def post(self, request, *args, **kwargs):
+        serializer=self.get_serializer(data=request.data)
+        # Validar los datos
+        if serializer.is_valid():
+            email=serializer.validated_data['email']
+            try:
+                user=Usuarios.objects.get(email=email)
+                token = default_token_generator.make_token(user)
+                return Response({
+                    "token": token,
+                    "email": email 
+                }, status=status.HTTP_200_OK)
+            except user.DoesNotExist:
+                return Response({
+                    "error": "No existe ningún usuario con este email."
+                }, status=status.HTTP_404_NOT_FOUND)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+       
+
 
 
 class CreateUser(generics.CreateAPIView):
@@ -71,3 +107,5 @@ class GetUsers(generics.ListAPIView):
     queryset = Usuarios.objects.all().order_by("-id")
     serializer_class = getUsers
     # permission_classes=[IsAdminUser]
+    
+

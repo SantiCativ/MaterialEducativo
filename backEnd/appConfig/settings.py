@@ -156,3 +156,4 @@ CORS_ALLOW_METHODS = [
     "PUT",
     "OPTIONS",
 ]
+
