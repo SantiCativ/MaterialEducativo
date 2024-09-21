@@ -15,7 +15,10 @@ import { SidebarComponent } from './pages/admin-panel/components/sidebar/sidebar
 
 import { UsersTableComponent } from './pages/admin-panel/components/users-table/users-table.component'; 
 import { DocumentsTableComponent } from './pages/admin-panel/components/documents-table/documents-table.component'; 
-import { LoginComponent } from './pages/login/login.component'; 
+import { LoginComponent } from './pages/login/login.component';
+import { NavbarComponent } from './pages/home/components/navbar/navbar.component';
+import { SidebarHomeComponent } from './pages/home/components/sidebar-home/sidebar-home.component';
+import { UploadDocumentComponent } from './pages/home/components/sidebar-home/components-sidebar/upload-document/upload-document.component'; 
 
 @NgModule({
   
@@ -30,6 +33,9 @@ import { LoginComponent } from './pages/login/login.component';
     UsersTableComponent,
     DocumentsTableComponent,
     LoginComponent,
+    NavbarComponent,
+    SidebarHomeComponent,
+    UploadDocumentComponent,
   
   ],
   imports: [

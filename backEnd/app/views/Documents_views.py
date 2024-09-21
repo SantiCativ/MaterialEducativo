@@ -23,6 +23,6 @@ class GetDocuments(generics.ListAPIView):
     queryset=Documentos.objects.all()
     serializer_class=Documents
     
-class UpdateDocument(generics.UpdateAPIView):
+class UpdateState(generics.UpdateAPIView):
     queryset=Documentos.objects.all()
-    serializer_class=Documents
+    serializer_class=updateState

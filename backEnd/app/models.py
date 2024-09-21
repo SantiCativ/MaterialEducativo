@@ -56,7 +56,7 @@ class Documentos(models.Model):
         default="1",
     )
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.title
 
 class Carpeta(models.Model):

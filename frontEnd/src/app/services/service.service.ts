@@ -28,9 +28,18 @@ export class MaterialService {
     const url = this.url + '/users/';
     return this.http.get(url);
   }
+  getDocuments(){
+    const url=this.url+'/documents/'
+    return this.http.get(url);
+  }
 
   updateEstado(id: string,dataState:any) {
     const url = this.url + '/update/estado/' + id
+    return this.http.put(url,dataState);
+  }
+
+  updateStateDocument(id:string,dataState:any){
+    const url = this.url + '/update/state/' + id
     return this.http.put(url,dataState);
   }
 

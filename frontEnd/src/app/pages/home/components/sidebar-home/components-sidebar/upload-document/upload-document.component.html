@@ -1,0 +1,28 @@
+<div class="modal" [class.is-active]="ModalActivo">
+    <div class="modal-background" (click)="OncloseModal()"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <section class="header-content">
+          <i class="fa-regular fa-circle-up  icon-custom"></i>
+          <p class="modal-card-title">Subir Documento</p>
+        </section>
+      </header>
+      <section class="modal-card-body">
+        <form (ngSubmit)="Subir()">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="file" (change)="DocumentChange($event)">
+            </div>
+          </div>
+        </form>
+      </section>
+      <footer class="modal-card-foot">
+        <section class="buttons">
+          <button class="button is-success" (click)="Subir()">Subir</button>
+          <button class="button is-danger" type="button" (click)="onCloseModal()">Cancelar</button>
+        </section>
+      </footer>
+    </div>
+    <button class="modal-close is-large" aria-label="close" (click)="onCloseModal()"></button>
+  </div>
+  
