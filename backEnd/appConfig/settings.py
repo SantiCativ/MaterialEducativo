@@ -83,9 +83,9 @@ WSGI_APPLICATION = "appConfig.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "material_educativo",
+        "NAME": "db_material_educativo",
         "USER": "postgres",
-        "PASSWORD": "santiago",
+        "PASSWORD": "nahuel",
         "HOST": "localhost",
         "PORT": "5432",
     }
@@ -156,3 +156,4 @@ CORS_ALLOW_METHODS = [
     "PUT",
     "OPTIONS",
 ]
+

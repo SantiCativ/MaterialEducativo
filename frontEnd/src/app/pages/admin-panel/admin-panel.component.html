@@ -4,15 +4,15 @@
     <app-sidebar (tableSelectionChange)="onTableSelectionChange($event)"></app-sidebar>
   </section>
   <section class="column">
-    <div class="box">
+    <section class="box">
       <app-topbar  (filterChanged)="onFilterChanged($event)" [table]="table"></app-topbar>
-    </div>
-    <div class="box">
+    </section>
+    <section class="box">
       <ng-container [ngSwitch]="table">
         <app-users-table *ngSwitchCase="'Usuarios'" [state]="state"  ></app-users-table>
-        <app-documents-table *ngSwitchCase="'Documentos'"></app-documents-table>
-        <div *ngSwitchDefault>Seleccione una tabla para visualizar</div>
+        <app-documents-table *ngSwitchCase="'Documentos'" [state]="state"></app-documents-table>
+        <section *ngSwitchDefault>Seleccione una tabla para visualizar</section>
       </ng-container>
-    </div>
+    </section>
   </section>
 </section>

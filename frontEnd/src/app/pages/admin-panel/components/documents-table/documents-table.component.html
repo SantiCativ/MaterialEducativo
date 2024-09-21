@@ -1,3 +1,32 @@
-<p>
-  documents-table works!
-</p>
+<table class="table is-fullwidth is-hoverable">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Título</th>
+      <th>Fecha de Creación</th>
+      <th>Archivo</th>
+      <th>Propietario</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doc of filteredDocuments | paginate: { itemsPerPage: 7, currentPage: pagina }">
+      <td>{{ doc.id }}</td>
+      <td>{{ doc.title }}</td>
+      <td>{{ doc.created_date | date:'shortDate' }}</td>
+      <td><a [href]="doc.file">Ver documento</a></td>
+      <td>{{ doc.owner.username }}</td>
+      <td>{{ doc.state === 1 ? 'Visible' : 'Oculto' }}</td>
+      <td>
+       <!-- En lugar de pasar '1', pasamos 1 como número -->
+        <i class="fa-regular fa-eye fa-xl" style="color: #40e77b; padding-right: 10px; cursor: pointer;" (click)="updatedState(doc.id, 1, 'Hacer Visible')"></i>
+        <i class="fa-regular fa-eye-slash fa-xl" style="color: #d01b1b; padding-left: 10px; cursor: pointer;" (click)="updatedState(doc.id, 2, 'Ocultar')"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="paginador">
+  <pagination-controls (pageChange)="pagina=$event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+</div>

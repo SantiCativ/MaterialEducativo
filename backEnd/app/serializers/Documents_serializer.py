@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from app.models import Documentos
+from app.serializers.User_serializer import *
 
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,6 +11,12 @@ class DocumentSerializer(serializers.ModelSerializer):
         return Documentos.objects.create(**validated_data)
     
 class Documents(serializers.ModelSerializer):
+    owner=getUser()
     class Meta:
         model=Documentos
         fields='__all__'
+        
+class updateState(serializers.ModelSerializer):
+    class Meta:
+        model=Documentos
+        fields=['state']
