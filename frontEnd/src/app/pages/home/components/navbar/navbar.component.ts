@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { MaterialService } from 'src/app/services/service.service';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-navbar-h',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })

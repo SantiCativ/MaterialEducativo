@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { TopbarComponent } from './topbar.component';
+import { SidebarComponentHome } from './sidebar.component';
 
-describe('TopbarComponent', () => {
-  let component: TopbarComponent;
-  let fixture: ComponentFixture<TopbarComponent>;
+describe('SidebarComponent', () => {
+  let component: SidebarComponentHome;
+  let fixture: ComponentFixture<SidebarComponentHome>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopbarComponent ]
+      declarations: [ SidebarComponentHome ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TopbarComponent);
+    fixture = TestBed.createComponent(SidebarComponentHome);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,15 @@
-<!-- <button (click)="Logout()" class="button">Logout</button> -->
-
-
-
-
-
-
-<section class="columns is-gapless">
-    <section class="column is-one-fifth">
-        <!-- <app-navbar></app-navbar> -->
+<section class="columns is-gapless container-principal">
+    <section class="column is-2">
+        <section class="container-sidebar">
+            <app-sidebar-h></app-sidebar-h>
+        </section>
     </section>
-    <section class="column">
-      <section class="box">
-        <app-topbar></app-topbar>
+    <section class="column is-10 container-nav-table">
+      <section class="container-navbar">
+        <app-navbar-h></app-navbar-h>
       </section>
-      <section class="box">
-        <app-table></app-table>
+      <section class="container-table">
+        <app-table-h></app-table-h>
       </section>
     </section>
-  </section>
+</section>

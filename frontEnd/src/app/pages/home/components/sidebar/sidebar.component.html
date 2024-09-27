@@ -1,0 +1,55 @@
+<aside class="menu">
+  <section class="iconpage-container">
+    <img src="assets/logo-untdf.png" alt="Logo" class="logo" />
+  </section>
+  
+  <section class="list-container">
+    <section class="dropdown" [ngClass]="{'is-active': isDropdownActive}">
+      <section class="dropdown-trigger">
+        <button class="button is-primary button-create" aria-haspopup="true" aria-controls="dropdown-menu" (click)="toggleDropdown()">
+          <i class="fa-solid fa-plus icon-button"></i>
+          <span>Nuevo</span>
+         
+        </button>
+      </section>
+      <section class="dropdown-menu" id="dropdown-menu" role="menu">
+        <section class="dropdown-content">
+          <a href="#" class="dropdown-item">
+            Nueva Carpeta
+          </a>
+          <a href="#" class="dropdown-item">
+            Nuevo Documento
+          </a>
+        </section>
+      </section>
+    </section>
+    <section class="menu-items">
+      <button class="button is-white">
+        <i class="fa-solid fa-house"></i>
+        <span>Pagina principal </span> 
+      </button>
+      <button class="button is-white">
+        <i class="fa-solid fa-desktop"></i>
+        <span>Mi uniddad </span> 
+      </button>
+      <button class="button is-white">
+        <i class="fa-solid fa-star"></i>
+        <span>Favoritos</span>
+      </button>
+      <button class="button is-white">
+        <i class="fa-regular fa-clock"></i>
+        <span>Recientes</span>
+      </button>
+      <button class="button is-white">
+        <i class="fa-solid fa-trash"></i>
+        <span>Papelera</span>  
+      </button>
+    </section>
+  </section>
+ 
+</aside>
+
+
+
+
+
