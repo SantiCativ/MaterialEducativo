@@ -1,0 +1,41 @@
+.lista{
+    display: flex;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .item{
+    background: aliceblue;
+  
+  }
+  
+  .mat-mdc-list-item-icon {
+    color: rgba(0, 0, 0, 0.54);
+  }
+  
+  
+  
+  
+  @media all and (max-width: 479px){
+   .lista{
+    flex-direction: column;
+   }
+  }
+  
+  @media all and (min-width: 480px) and (max-width: 767px){
+    .lista{
+      flex-direction: column;
+     }
+  }
+  
+  @media all and (min-width: 768px) and (max-width: 959px){
+  
+  }
+  
+  @media all and (min-width: 960px) and (max-width: 1499px){
+  
+  }
+  
+  @media all and (min-width: 1500px){
+  
+  }

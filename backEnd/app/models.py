@@ -63,7 +63,9 @@ class Carpeta(models.Model):
     nombre=models.CharField(max_length=50,null=False)
     usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE, null=False)
     created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
+    updated_at = models.DateField(auto_now=True,null=True)
+    subcarpeta = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+    
     
 class CarpetaDocumento(models.Model):
     carpeta = models.ForeignKey(Carpeta, on_delete=models.CASCADE, null=False)
@@ -95,6 +97,7 @@ class Comentario(models.Model):
     comentario = models.TextField(null=False)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
+    
 
 
 class Denuncia(models.Model):

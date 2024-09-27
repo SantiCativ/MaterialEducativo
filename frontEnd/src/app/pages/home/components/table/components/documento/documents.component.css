@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+}
+
+button {
+    margin: 0 8px 8px 0;
+}
+
+
+table {
+    width: 100%;
+}
+
+.mat-elevation-z8 {
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.custom-row:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* fuerzo para que aplique el hover ya que hay conflictos con los estilos de angular material... */
+.custom-row {
+    display: table-row !important;
+}
+
+.custom-row:hover {
+    background-color: #f5f5f5 !important;
+}
