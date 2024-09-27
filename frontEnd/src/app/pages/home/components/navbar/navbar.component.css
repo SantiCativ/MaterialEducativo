@@ -1,7 +1,65 @@
 .navbar{
-    background-color: #000000;
+  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+  height: 100%; /* Hace que ocupe todo el alto del contenedor */
+  display: flex;
+  padding: 10px ;
+  background-color: transparent;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.navbar-item,.navbar-link{
-    color: white;
+.search-container {
+  position: relative; /* Para permitir la posición absoluta del icono */
+  width: 700px; /* Ajusta el ancho del contenedor y del input */
+  align-items: center;
+}
+
+.search-input{
+    width: 700px; /* Define un ancho fijo para el input */
+    height: 55px;
+    padding: 10px 15px 10px 50px; 
+    font-size: 16px;
+    max-width: 100%; /* Asegura que el input no se salga del contenedor */
+}
+
+.filter-icon {
+  position: absolute; /* Posiciona el icono dentro del contenedor */
+  right: 10px; /* Alinea el icono a la derecha */
+  top: 50%; /* Centra verticalmente */
+  transform: translateY(-50%); /* Ajuste fino para centrar verticalmente */
+  color: #3f3f3f; /* Color del icono */
+  font-size: 20px; /* Tamaño del icono */
+  padding-right: 10px;
+}
+
+.lupa-icon{
+  position: absolute; /* Para colocar el ícono dentro del input */
+  left: 15px; /* Coloca el ícono a la izquierda dentro del input */
+  top: 50%; 
+  transform: translateY(-50%);
+  color: #3f3f3f; 
+  font-size: 20px;
+}
+
+.icons-container{
+  display: flex;
+  background-color: transparent;
+  justify-content: left;
+  align-items: center;
+  gap:5px;
+  width: 300px;
+  height: 50px;
+  right: 5px;
+}
+
+.icons-container i {
+  font-size: 27px; /* Tamaño de los iconos */
+  color: #3f3f3f;
+  padding: 6px;
+  border-radius: 50%; /* Hace que el borde sea circular */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.icons-container i:hover {
+  background-color: #cec9c9; /* Cambia el color de fondo al pasar el puntero */
 }

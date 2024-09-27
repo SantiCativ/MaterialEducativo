@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialService } from 'src/app/services/service.service';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidebarHomeComponent } from '../sidebar-home/sidebar-home.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,7 +8,7 @@ import { SidebarHomeComponent } from '../sidebar-home/sidebar-home.component';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _Materialservice: MaterialService){}
+  constructor(){}
 
   ngOnInit(): void {}
 
