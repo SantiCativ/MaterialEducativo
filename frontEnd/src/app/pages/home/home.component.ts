@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialService } from 'src/app/services/service.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidebarHomeComponent } from './components/sidebar-home/sidebar-home.component';
+import { SidebarComponentHome } from './components/sidebar/sidebar.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

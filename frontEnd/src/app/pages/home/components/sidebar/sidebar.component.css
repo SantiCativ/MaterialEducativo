@@ -1,0 +1,78 @@
+.menu {
+    background-color:transparent;
+    height: 100vh; /* Hace que la sidebar ocupe toda la altura de la pantalla */
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+  }
+
+.iconpage-container {
+    height: 80px; /* Ajusta el tamaño de este contenedor como prefieras */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    background-color: transparent; /* Un color de fondo o imagen para personalización */
+    font-size: 24px; /* Tamaño del texto */
+  }
+
+.list-container {
+    flex-grow: 1; /* Permite que este contenedor tome el resto del espacio */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+.button{
+    justify-content: flex-start; /* Alinea el contenido a la izquierda */
+    width: 100%; /* Hace que el botón ocupe todo el ancho disponible */
+    text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+    padding-left: 20px; /* Agrega un espacio a la izquierda del texto */
+    background-color: transparent;
+    display: flex; /* Hace que el icono y el texto se alineen horizontalmente */
+    align-items: flex-start; /* Centra verticalmente el contenido del botón */
+    font-size: 15px;
+    border-radius: 20px;
+    transition: background-color 0.2s ease, color 0.2s ease; /* Transición suave para color de fondo y texto */
+}
+
+.menu-items button:hover {
+  background-color: rgb(230, 230, 230); /* Color de fondo al pasar el mouse */
+  color: black; /* Color del texto al pasar el mouse */
+}
+
+.button-create{
+    background-color: white;
+    display: flex; /* Utiliza flexbox para alinear los elementos en fila */
+    align-items: center; /* Centra verticalmente el contenido dentro del botón */
+    height: 55px;
+    border-radius: 20px;
+    font-size: 17px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Añade sombra alrededor del botón */
+    transition: box-shadow 0.3s ease; /* Transición suave en el cambio de sombra */
+}
+
+.button-create:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más grande al pasar el mouse */
+  }
+
+.icon-button {
+    margin-right: 8px; /* Añade un espacio entre el icono y el texto */
+    font-size: 20px;
+  }
+
+.menu-items{
+    padding-top: 10px;
+  }
+
+.menu-items i{
+    padding-right: 8px;
+    font-size: 17px;
+  }
+
+.logo {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    padding-left: 10px;
+   
+  }
+
+ 

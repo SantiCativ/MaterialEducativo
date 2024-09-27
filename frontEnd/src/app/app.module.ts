@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+                                    import { MatIconModule } from '@angular/material/icon';
 //componentes
 import { HomeComponent } from './pages/home/home.component'; 
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
@@ -17,8 +17,8 @@ import { UsersTableComponent } from './pages/admin-panel/components/users-table/
 import { DocumentsTableComponent } from './pages/admin-panel/components/documents-table/documents-table.component'; 
 import { LoginComponent } from './pages/login/login.component';
 import { NavbarComponent } from './pages/home/components/navbar/navbar.component';
-import { SidebarHomeComponent } from './pages/home/components/sidebar-home/sidebar-home.component';
-import { UploadDocumentComponent } from './pages/home/components/sidebar-home/components-sidebar/upload-document/upload-document.component'; 
+import { SidebarComponentHome } from './pages/home/components/sidebar/sidebar.component';
+import { TableComponentHome } from './pages/home/components/table/table.component';
 
 @NgModule({
   
@@ -34,9 +34,8 @@ import { UploadDocumentComponent } from './pages/home/components/sidebar-home/co
     DocumentsTableComponent,
     LoginComponent,
     NavbarComponent,
-    SidebarHomeComponent,
-    UploadDocumentComponent,
-  
+    SidebarComponentHome,
+    TableComponentHome
   ],
   imports: [
     BrowserModule,
@@ -44,7 +43,7 @@ import { UploadDocumentComponent } from './pages/home/components/sidebar-home/co
     HttpClientModule,
     AppRoutingModule,
     NgxPaginationModule,
-   
+    MatIconModule,
   
   ],
   providers: [],

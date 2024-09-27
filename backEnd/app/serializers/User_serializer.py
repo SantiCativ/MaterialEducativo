@@ -3,7 +3,7 @@ from django.contrib.auth.hashers import make_password
 from app.models import Usuarios
 from django.contrib.auth.tokens import default_token_generator
 
-class resetPasswordConfirm(serializers.ModelSerializer):
+class resetPasswordConfirm(serializers.ModelSerializer):#falta que envie un email para cambiar contraseña
     token = serializers.CharField()
     new_password = serializers.CharField(min_length=5, write_only=True)
     email = serializers.EmailField()
