@@ -36,11 +36,21 @@ class Usuarios(
 
     def __str__(self):
         return self.username
+    
+    
+class Materia(models.Model):
+    nombre = models.CharField(max_length=50, null=False)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True,null=True)
+
+    def __str__(self):
+        return self.nombre
 
 
 class Documentos(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
     file = models.FileField(upload_to="documents", null=False, blank=False)
+    materia = models.ForeignKey(Materia, on_delete=models.RESTRICT,related_name="Materia", null=False)
     owner = models.ForeignKey(
         Usuarios, on_delete=models.CASCADE, related_name="documents"
     )
@@ -98,8 +108,6 @@ class Comentario(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     
-
-
 class Denuncia(models.Model):
     documento = models.ForeignKey(Documentos, on_delete=models.CASCADE, null=False)
     usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE, null=False)
@@ -115,3 +123,4 @@ class Denuncia(models.Model):
         ),
         default="1",
     )
+    

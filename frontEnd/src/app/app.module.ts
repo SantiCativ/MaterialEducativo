@@ -20,7 +20,7 @@ import { DocumentsTableComponent } from './pages/admin-panel/components/document
 import { LoginComponent } from './pages/login/login.component';
 import { NavbarComponent } from './pages/home/components/navbar/navbar.component';
 
-import { UploadDocumentComponent } from './pages/sidebar-home/components-sidebar/upload-document/upload-document.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 //componentes angular material
 import { MatListModule } from '@angular/material/list';
@@ -49,7 +49,6 @@ import { TableComponentHome } from './pages/home/components/table/table.componen
     DocumentsTableComponent,
     LoginComponent,
     NavbarComponent,
-    UploadDocumentComponent,
     FoldersComponent,
     DocumentsComponent,
     SidebarComponentHome,

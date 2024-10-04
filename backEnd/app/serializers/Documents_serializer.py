@@ -5,7 +5,7 @@ from app.serializers.User_serializer import *
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model=Documentos
-        fields=["title", "created_date","file", "owner_id", "state"]
+        fields=["title", "created_at","file", "owner_id", "state"]
         
     def create(self, validated_data):
         return Documentos.objects.create(**validated_data)
@@ -20,3 +20,10 @@ class updateState(serializers.ModelSerializer):
     class Meta:
         model=Documentos
         fields=['state']
+        
+        
+
+
+        
+        
+        
