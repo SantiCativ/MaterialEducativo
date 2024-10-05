@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import {NgxPaginationModule} from 'ngx-pagination';
+
+import { NgxPaginationModule} from 'ngx-pagination';
 
 //componentes
 import { HomeComponent } from './pages/home/home.component'; 
