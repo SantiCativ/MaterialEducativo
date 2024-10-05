@@ -100,8 +100,7 @@ class DeleteUser(generics.DestroyAPIView):
 class GetUser(generics.RetrieveAPIView):
     queryset = Usuarios.objects.all()
     serializer_class = getUser
-    # permission_classes=[IsAdminUser]
-
+    permission_classes=[IsAuthenticated]
 
 class GetUsers(generics.ListAPIView):
     queryset = Usuarios.objects.all().order_by("-id")
