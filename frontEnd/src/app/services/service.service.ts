@@ -13,8 +13,41 @@ export class MaterialService {
   private accessTokenKey = 'access';
   private refreshTokenKey = 'refresh';
   private userKey = 'user';  // Clave para almacenar la información del usuario
+  private user: any = null; // Guardar el perfil del usuario en memoria
 
   constructor(private http: HttpClient, private route: Router) { }
+
+
+
+  getDocuments() {
+    const url = this.url + '/documents/'
+    return this.http.get(url);
+  }
+  
+  getSuggestedDocuments(id:string){
+    const url = this.url + '/documents_suggested/' + id
+    return this.http.get(url);
+  }
+
+  getFolders(id:string) {
+    const url = this.url + '/last_folders_modified/' + id
+    return this.http.get(url);
+  }
+
+  updateEstado(id: string, dataState: any) {
+    const url = this.url + '/update/estado/' + id
+    return this.http.put(url, dataState);
+  }
+
+  updateStateDocument(id: string, dataState: any) {
+    const url = this.url + '/update/state/' + id
+    return this.http.put(url, dataState);
+  }
+
+
+
+  //*? de aca para abajo esta todo relacionado con los Usuarios, deberiamos Colocarlo en otro servicio 
+  //? apartado que sea por ejemplo UsuarioService
 
   registrarUsuario(formData: any): Observable<any> {//ESTO ES NUEVO, MANEJO LOS ERRORES EN EL POST
     const url = this.url + '/registro/';
@@ -29,26 +62,11 @@ export class MaterialService {
     const url = this.url + '/users/';
     return this.http.get(url);
   }
-  getDocuments(){
-    const url=this.url+'/documents/'
-    return this.http.get(url);
-  }
 
-  updateEstado(id: string,dataState:any) {
-    const url = this.url + '/update/estado/'+id
-    return this.http.put(url,dataState);
-  }
-  
-  //NUEVO
   getUserProfile(id: number): Observable<any> {
-    const url=this.url + '/user_profile/' + id;
-    const headers=this.getHeader(); //obtengo el header
-    return this.http.get(url,{ headers }); //agrego el header en la peticion para la autenticacion
-  }
-
-  updateStateDocument(id:string,dataState:any){
-    const url = this.url + '/update/state/' + id
-    return this.http.put(url,dataState);
+    const url = this.url + '/user_profile/' + id;
+    const headers = this.getHeader(); //obtengo el header
+    return this.http.get(url, { headers }); //agrego el header en la peticion para la autenticacion
   }
 
   loginUser(username: string, password: string): Observable<any> {
@@ -88,18 +106,19 @@ export class MaterialService {
     localStorage.removeItem(this.accessTokenKey);
     localStorage.removeItem(this.refreshTokenKey);
     localStorage.removeItem(this.userKey);
+    this.user = null; // Limpiar los datos del usuario de la memoria
     this.route.navigate(['/login']);//aqui me redirecciona ala pantalla login
   }
 
   //NUEVO
   getUserIdToken(): number | null {//este metodo me devuelve el id del user que esta en el access token
-      const token=this.getAccessTokenKey();
-      if (token){
-        const payload=JSON.parse(atob(token.split('.')[1]));  // Decodifica la parte del payload del token
-        return payload.user_id;//el JWT tiene el id del usuario en el campo 'user_id'
-      }
-      return null;
+    const token = this.getAccessTokenKey();
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));  // Decodifica la parte del payload del token
+      return payload.user_id;//el JWT tiene el id del usuario en el campo 'user_id'
     }
+    return null;
+  }
 
   //NUEVO
   private getHeader(): HttpHeaders {
@@ -112,31 +131,38 @@ export class MaterialService {
       return new HttpHeaders();  // Si no hay token, devuelve un objeto HttpHeaders vacío
     }
   }
-  //NUEVO
-private loadUser(): void {
-  const userId=this.getUserIdToken();  // Obtener el ID del token
-  if (userId){
-    this.getUserProfile(userId).subscribe(
-      (userData: any) => {
-        localStorage.setItem(this.userKey, JSON.stringify(userData));  //guarda la información del user en localStorage
-      },
-      (error) => {
-        console.error('Error al cargar el perfil del usuario', error);
-      }
-    );
-  } else {
-    console.error('No se pudo obtener el id del usuario del token');
-  }
-}
 
+
+
+  private loadUser(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const userId = this.getUserIdToken(); // Obtener el ID del token
   
-  //NUEVO  
+      if (userId) {
+        this.getUserProfile(userId).subscribe(
+          (userData: any) => {
+            this.user = userData; // Guardar solo en memoria
+            resolve(); // Resuelve la promesa
+          },
+          (error) => {
+            console.error('Error al cargar el perfil del usuario', error);
+            reject(error); // Rechaza la promesa
+          }
+        );
+      } else {
+        console.error('No se pudo obtener el id del usuario del token');
+        reject(new Error('ID de usuario no disponible'));
+      }
+    });
+  }
+
+
   getUserLocalStorage(): any {//obtengo los datos del usuario desde el localStorage
-      return JSON.parse(localStorage.getItem(this.userKey)!);
-    }
-  //NUEVO
-  getUserId(): number | null {//obtengo el id del usuario que se autentico
-      const user = this.getUserLocalStorage();
-      return user ? user.id : null;
-    }
+    return JSON.parse(localStorage.getItem(this.userKey)!);
+  }
+
+  getUser(): Promise<any> {
+     // const user = this.getUserLocalStorage();
+    return this.loadUser().then(() => this.user);
+  }
 }
