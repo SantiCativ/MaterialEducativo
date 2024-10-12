@@ -44,7 +44,7 @@
 .icons-container{
   display: flex;
   background-color: transparent;
-  justify-content: left;
+  justify-content: right;
   align-items: center;
   gap:5px;
   width: 300px;

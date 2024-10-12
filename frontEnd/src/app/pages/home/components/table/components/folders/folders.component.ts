@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MaterialService } from 'src/app/services/service.service';
+import { AlertService } from 'src/app/services/alertas/alert.service';
 
 export interface Section {
   name: string;
@@ -12,34 +14,29 @@ export interface Section {
 })
 export class FoldersComponent implements OnInit {
 
-  folders: Section[] = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    },
-  ];
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    },
-  ];
-
-  constructor() { }
+  folders: any
+  
+  constructor(private _Materialservice: MaterialService, private _alertService: AlertService) { }
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser() {
+    this._Materialservice.getUser().then(usuario => {
+      if (usuario) {
+        this.getFolders(usuario.id);
+      }
+    }).catch(error => {
+      console.error('Error al obtener el usuario', error);
+    });
+  }
+
+  getFolders(idUser:string){
+    this._Materialservice.getFolders(idUser).subscribe({
+      next: (response) => { console.log(response); this.folders = response;  },
+      error: () => this._alertService.error('Respuesta Fallida')
+    })
   }
 
 }

@@ -1,36 +1,30 @@
-            .father-container{
-  height: 100vh; /* Hace que el contenedor ocupe toda la altura de la ventana */
-  display: flex; /* Alinea los hijos en una fila */
-  flex-direction: column; /* Apila los hijos verticalmente */
-}
-.container-sidebar{
-  background-color: transparent;
-  width: 100%;
-  padding: 0; /* Elimina cualquier padding */
-  margin: 0; /* Elimina cualquier margen */
-}
+            .father-container {
+              height: 100vh;
+              /* Hace que el contenedor ocupe toda la altura de la ventana */
+              display: flex;
+              /* Alinea los hijos en una fila */
+              flex-direction: column;
+              /* Apila los hijos verticalmente */
+            }
 
-.container-navbar {
-  height: 80px;
-  width: 100%;  
-  padding: 0; /* Elimina el padding */
-  margin: 0; /* Elimina el margin */
-  background-color: transparent;
-}
+            .container-sidebar {
+              background-color: transparent;
+              width: 100%;
+            }
 
-.container-principal{
-  background-color: #F1F3F4;
-  display: flex;
-}
+            .container-navbar {
+              height: 80px;
+              width: 100%;
+              background-color: transparent;
+            }
 
-.container-nav-table{
-  width: 100%;
-}
+            .container-principal {
+              background-color: #F1F3F4;
+              display: flex;
+            }
 
-.container-table {
-  background-color: white             ; /* Cambia este color según tu preferencia */
-  border-radius: 20px; /* Ajusta el valor para bordes más o menos redondeados */
-  padding: 20px; /* Espaciado interno para que el contenido no esté pegado a los bordes */
-  height: 100%;
-}
-
+            .container-table {
+              background-color: white;
+              border-radius: 20px;
+              height: 100%;
+            }

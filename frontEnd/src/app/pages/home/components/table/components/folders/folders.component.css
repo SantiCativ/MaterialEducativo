@@ -6,7 +6,7 @@
   
   .item{
     background: aliceblue;
-  
+    width: 15rem;
   }
   
   .mat-mdc-list-item-icon {
@@ -14,11 +14,14 @@
   }
   
   
-  
-  
+
   @media all and (max-width: 479px){
    .lista{
     flex-direction: column;
+   }
+
+   .item{
+    width: 15rem;
    }
   }
   
@@ -26,10 +29,14 @@
     .lista{
       flex-direction: column;
      }
+
+     .item{
+      width: 14rem;
+     }
   }
   
   @media all and (min-width: 768px) and (max-width: 959px){
-  
+    
   }
   
   @media all and (min-width: 960px) and (max-width: 1499px){

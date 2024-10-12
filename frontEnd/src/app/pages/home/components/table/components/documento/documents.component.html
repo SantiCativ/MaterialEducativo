@@ -1,37 +1,29 @@
 <div mat-subheader>Documentos sugeridos</div>
 
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<table mat-table [dataSource]="documents" matSort class="mat-elevation-z8">
   <!-- Nombre Column -->
   <ng-container matColumnDef="nombre">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
     <td mat-cell *matCellDef="let element">
       <i class="fa-solid fa-file fa-xl" style="margin-right: 8px;"></i>
-      {{element.nombre}}
+      {{element.title}}
     </td>
   </ng-container>
 
   <!-- Creado Column -->
   <ng-container matColumnDef="creado">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Creado</th>
-    <td mat-cell *matCellDef="let element">{{element.creado}}</td>
+    <td mat-cell *matCellDef="let element">{{element.created_at}}</td>
   </ng-container>
 
   <!-- Propietario Column -->
   <ng-container matColumnDef="propietario">
     <th mat-header-cell *matHeaderCellDef>Propietario</th>
     <td mat-cell *matCellDef="let element">
-      <i class="fa-solid fa-circle-user fa-xl" style="margin-right: 8px;"></i>{{element.propietario}}
+      <i class="fa-solid fa-circle-user fa-xl" style="margin-right: 8px;"></i>{{element.owner_name}}
     </td>
   </ng-container>
-
-  <!-- Ubicacion Column -->
-  <ng-container matColumnDef="ubicacion">
-    <th mat-header-cell *matHeaderCellDef>Ubicacion</th>
-    <td mat-cell *matCellDef="let element"><i class="fa-solid fa-folder fa-xl"
-        style="margin-right: 8px;"></i>{{element.ubicacion}}</td>
-  </ng-container>
-
-  <!-- Header and Row Definitions -->
+  
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="custom-row"></tr>
 

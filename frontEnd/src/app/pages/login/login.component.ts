@@ -8,18 +8,20 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
-  username:string='';
-  password:string='';
+export class LoginComponent implements OnInit {
+  username: string = '';
+  password: string = '';
 
-  constructor(private _Materialservice: MaterialService,private _alertService: AlertService,private router:Router ){}
+  constructor(private _Materialservice: MaterialService, private _alertService: AlertService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  Login():void{
-    this._Materialservice.loginUser(this.username,this.password).subscribe({
-      next: ()=> this.router.navigate(['/home']),
-      error: ()=> this._alertService.error('Login fallido')
+  Login(): void {
+    this._Materialservice.loginUser(this.username, this.password).subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      },
+      error: () => this._alertService.error('Login fallido')
     })
   }
 }
