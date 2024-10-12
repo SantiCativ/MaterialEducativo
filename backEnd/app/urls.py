@@ -14,8 +14,8 @@ urlpatterns= [
     path('update/<int:pk>/',UpdatedUser.as_view()),
     path('update/estado/<int:pk>',UpdatedEstado.as_view()),
     path('delete/<int:pk>/', DeleteUser.as_view()), 
-    path('carpetas-modificadas/<int:idUser>/',CarpetasModificadas.as_view()),
-    path('documentos-sugeridos/<int:idUser>/', DocumentosSugeridos.as_view()),
+    path('last_folders_modified/<int:idUser>/',CarpetasModificadas.as_view()),
+    path('documents_suggested/<int:idUser>/', DocumentosSugeridos.as_view()),
     path('user_profile/<int:pk>/', GetUser.as_view()), 
     path('users/', GetUsers.as_view()), 
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
@@ -23,7 +23,6 @@ urlpatterns= [
     path('update/state/<int:pk>',UpdateState.as_view()),
     path('password_reset/', ResetPassword.as_view(), name='password_reset_request'),
     path('password_reset_confirm/', ResetPasswordConfirm.as_view(),),
-    #nuevo
     path('favorite_documents/<int:pk>',UserFavoritesDocuments.as_view()),
     path('user_documents/<int:pk>', UserDocuments.as_view()),#este controlador esta destinado al uso del usuario
     path('list_user_folders/<int:pk>',UserFolders.as_view()),

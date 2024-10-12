@@ -31,6 +31,16 @@ class userDocumentsFavorito(serializers.ModelSerializer):#este es un serialzidor
         class Meta:
          model=Documentos
          fields=["title", "created_date","file","owner_name"]
+         
+         
+class DocumentsSuggested(serializers.ModelSerializer):
+    owner_name = serializers.CharField(source='owner.username', read_only=True)
+    owner_foto = serializers.CharField(source='owner.foto', read_only=True)
+    
+    class Meta:
+        model=Documentos
+        fields=["title", "created_at","file","owner_name","owner_foto"]
+    
         
 class Folders(serializers.ModelSerializer):#este serializer esta destinado para ser usado en metodos get
     class Meta:
