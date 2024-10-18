@@ -104,15 +104,7 @@ class UserFolder(generics.RetrieveAPIView):
         carpeta_id=self.kwargs.get('id')
         return Carpeta.objects.get(id=carpeta_id,usuario=user)
     
-
-class CreateFolderUser(generics.CreateAPIView):
-    serializer_class = newFolder
-    permission_classes = [IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(usuario=self.request.user)#le asigno el usuario autenticado al campo usuario de la carpeta para establecer la relacion
-        
-
+    
 class GetDocument(generics.RetrieveAPIView):
     serializer_class=DocumentSerializer
     queryset=Carpeta.objects.all()

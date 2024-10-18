@@ -47,7 +47,4 @@ class Folders(serializers.ModelSerializer):#este serializer esta destinado para 
         model=Carpeta
         fields='__all__'
         
-class newFolder(serializers.ModelSerializer):#este serializer esta destinado para ser usado en el metodo de creacion
-    class Meta:
-        model=Carpeta
-        fields=['nombre']
+

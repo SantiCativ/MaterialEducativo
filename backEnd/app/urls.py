@@ -26,7 +26,9 @@ urlpatterns= [
     path('favorite_documents/<int:pk>',UserFavoritesDocuments.as_view()),
     path('user_documents/<int:pk>', UserDocuments.as_view()),#este controlador esta destinado al uso del usuario
     path('list_user_folders/<int:pk>',UserFolders.as_view()),
-    path('create_folder/',CreateFolderUser.as_view()),
+    path('create_folder/',CreateFolder.as_view()),
     path('document/<int:pk>',GetDocument.as_view()),
     path('folder/<int:pk>',UserFolder.as_view()),
+    path('departamentos', GetDepartamentos.as_view(),), 
+    
     ]
