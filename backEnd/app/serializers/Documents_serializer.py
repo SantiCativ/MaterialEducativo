@@ -24,13 +24,13 @@ class updateState(serializers.ModelSerializer):
 class userDocuments(serializers.ModelSerializer):#este es un serialzidor generico, solo para recuper un doc para el usuario
     class Meta:
         model=Documentos
-        fields=["title", "created_date","file"]
+        fields=["title", "created_at","file"]
         
 class userDocumentsFavorito(serializers.ModelSerializer):#este es un serialzidor generico, solo para recuper un doc para el usuario
         owner_name = serializers.CharField(source='owner.username', read_only=True)    
         class Meta:
          model=Documentos
-         fields=["title", "created_date","file","owner_name"]
+         fields=["title", "created_at","file","owner_name"]
          
          
 class DocumentsSuggested(serializers.ModelSerializer):
@@ -42,12 +42,4 @@ class DocumentsSuggested(serializers.ModelSerializer):
         fields=["title", "created_at","file","owner_name","owner_foto"]
     
         
-class Folders(serializers.ModelSerializer):#este serializer esta destinado para ser usado en metodos get
-    class Meta:
-        model=Carpeta
-        fields='__all__'
-        
-class newFolder(serializers.ModelSerializer):#este serializer esta destinado para ser usado en el metodo de creacion
-    class Meta:
-        model=Carpeta
-        fields=['nombre']
+

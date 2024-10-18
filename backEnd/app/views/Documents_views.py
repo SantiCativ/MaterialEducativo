@@ -71,7 +71,7 @@ class UserFavoritesDocuments(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        user_id=self.kwargs['id']
+        user_id=self.kwargs['pk']
         return Documentos.objects.filter(favorito__usuario_id=user_id)
         
 
@@ -80,44 +80,17 @@ class UserDocuments(generics.ListAPIView):#este controlador es destinado para el
     permission_classes=[IsAuthenticated]
 
     def get_queryset(self):
-        user_id=self.kwargs['id']  # Asumiendo que el user_id se pasa como parte de la URL
+        user_id=self.kwargs['pk']  # Asumiendo que el user_id se pasa como parte de la URL
         user=get_object_or_404(Usuarios,id=user_id)  # Obtiene el usuario o lanza un 404
         return Documentos.objects.filter(owner=user)
-    
-
-class UserFolders(generics.ListAPIView):#este controlador es para el uso del user para mostar sus carpetas
-    serializer_class=Folders
-    permission_classes=[IsAuthenticated]
-
-    def get_queryset(self):
-        user_id=self.kwargs['id']  # Asumiendo que el user_id se pasa como parte de la URL
-        user=get_object_or_404(Usuarios,id=user_id)  # Obtiene el usuario o lanza un 404
-        return Carpeta.objects.filter(usuario=user)
 
 
-class UserFolder(generics.RetrieveAPIView):
-    queryset=Carpeta.objects.all()
-    serializer_class=Folders
-    permission_classes=[IsAuthenticated]
-    def get_object(self):
-        user=self.request.user
-        carpeta_id=self.kwargs.get('id')
-        return Carpeta.objects.get(id=carpeta_id,usuario=user)
-    
-
-class CreateFolderUser(generics.CreateAPIView):
-    serializer_class = newFolder
-    permission_classes = [IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(usuario=self.request.user)#le asigno el usuario autenticado al campo usuario de la carpeta para establecer la relacion
-        
-
+#este controlador solo trae 1 documento de un user autenticado,
 class GetDocument(generics.RetrieveAPIView):
     serializer_class=DocumentSerializer
     queryset=Carpeta.objects.all()
     permission_classes=[IsAuthenticated]
     def get_object(self):
         user=self.request.user
-        document_id=self.kwargs.get('id')
+        document_id=self.kwargs.get('pk')
         return Documentos.objects.get(id=document_id,usuario=user)
