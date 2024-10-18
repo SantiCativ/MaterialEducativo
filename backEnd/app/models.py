@@ -37,7 +37,23 @@ class Usuarios(
     def __str__(self):
         return self.username
     
+class Departamento(models.Model):
+    nombre = models.CharField(max_length=50, null=False)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True,null=True)
+
+    def __str__(self):
+        return self.nombre
     
+class Carrera(models.Model):
+    nombre = models.CharField(max_length=50, null=False)
+    departamento = models.ForeignKey(Departamento,on_delete=models.RESTRICT, null=False)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True,null=True)
+    def __str__(self):
+        return self.nombre
+    
+
 class Materia(models.Model):
     nombre = models.CharField(max_length=50, null=False)
     created_at = models.DateField(auto_now_add=True)
@@ -45,6 +61,10 @@ class Materia(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+class CarreraMateria(models.Model):
+    carrera = models.ForeignKey(Carrera, on_delete=models.RESTRICT, null=False)
+    materia= models.ForeignKey(Materia, on_delete=models.RESTRICT, null=False)
 
 
 class Documentos(models.Model):
@@ -123,4 +143,8 @@ class Denuncia(models.Model):
         ),
         default="1",
     )
+    
+    
+    
+
     
