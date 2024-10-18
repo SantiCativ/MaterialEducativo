@@ -15,6 +15,7 @@ import { TopbarComponent } from './pages/admin-panel/components/topbar/topbar.co
 import { SidebarComponent } from './pages/admin-panel/components/sidebar/sidebar.component';
 import { FoldersComponent } from './pages/home/components/table/components/folders/folders.component';
 import { DocumentsComponent } from './pages/home/components/table/components/documento/documents.component';
+import { FiltersComponent } from './pages/home/components/table/components/filters/filters/filters.component';
 
 import { UsersTableComponent } from './pages/admin-panel/components/users-table/users-table.component'; 
 import { DocumentsTableComponent } from './pages/admin-panel/components/documents-table/documents-table.component'; 
@@ -53,7 +54,8 @@ import { TableComponentHome } from './pages/home/components/table/table.componen
     FoldersComponent,
     DocumentsComponent,
     SidebarComponentHome,
-    TableComponentHome
+    TableComponentHome,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,

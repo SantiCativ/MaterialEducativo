@@ -1,0 +1,139 @@
+.container-filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    gap: 1rem;
+}
+
+.search-container {
+    position: relative;
+    /* Para permitir la posición absoluta del icono */
+    width: 700px;
+    /* Ajusta el ancho del contenedor y del input */
+    align-items: center;
+}
+
+.search-input {
+    width: 700px;
+    /* Define un ancho fijo para el input */
+    height: 55px;
+    padding: 10px 15px 10px 50px;
+    font-size: 16px;
+    max-width: 100%;
+    /* Asegura que el input no se salga del contenedor */
+}
+
+.filter-icon {
+    position: absolute;
+    /* Posiciona el icono dentro del contenedor */
+    right: 10px;
+    /* Alinea el icono a la derecha */
+    top: 50%;
+    /* Centra verticalmente */
+    transform: translateY(-50%);
+    /* Ajuste fino para centrar verticalmente */
+    color: #3f3f3f;
+    /* Color del icono */
+    font-size: 20px;
+    /* Tamaño del icono */
+    padding-right: 10px;
+}
+
+.lupa-icon {
+    position: absolute;
+    /* Para colocar el ícono dentro del input */
+    left: 15px;
+    /* Coloca el ícono a la izquierda dentro del input */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #3f3f3f;
+    font-size: 20px;
+}
+
+
+.items {
+    display: flex;
+    gap: 1rem;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.07);
+    border-radius: 6rem;
+    padding: 10px;
+    gap: 7px;
+    position: relative;
+    /* Importante para posicionar el dropdown */
+    transition: background-color 0.3s ease;
+    z-index: 1001; /* El item y el dropdown están por encima del overlay */
+}
+
+.item:hover {
+    background-color: #d5d8d9;
+    cursor: pointer;
+    transform: scale(1.05);
+    /* Aumenta ligeramente el tamaño al hacer hover */
+
+}
+
+.item:hover i,
+.item:hover p {
+    color: rgb(155, 18, 18);
+    /* Cambia el color de los iconos y el texto en hover */
+}
+
+/* Overlay */
+.overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Cubre toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color oscuro con transparencia */
+    z-index: 999; /* Debe estar justo por debajo del dropdown */
+  }
+
+  .dropdown {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 150px;
+    z-index: 1001; /* Dropdown por encima del overlay */
+  }
+  
+  .dropdown li {
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown li:last-child {
+    border-bottom: none;
+  }
+  
+  .dropdown li:hover {
+    background-color: lightgray;
+  }
+  
+  /* Mostrar la lista cuando se haga hover sobre el item o el dropdown */
+  .item:hover .dropdown, .item .dropdown:hover {
+    display: block;
+  }
+  
+  .item:hover ~ .overlay {
+    display: block; /* Mostrar el overlay cuando el dropdown esté visible */
+  }
+
+
+

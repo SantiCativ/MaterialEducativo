@@ -8,48 +8,10 @@
   align-items: center;
 }
 
-.search-container {
-  position: relative; /* Para permitir la posición absoluta del icono */
-  width: 700px; /* Ajusta el ancho del contenedor y del input */
-  align-items: center;
-}
-
-.search-input{
-    width: 700px; /* Define un ancho fijo para el input */
-    height: 55px;
-    padding: 10px 15px 10px 50px; 
-    font-size: 16px;
-    max-width: 100%; /* Asegura que el input no se salga del contenedor */
-}
-
-.filter-icon {
-  position: absolute; /* Posiciona el icono dentro del contenedor */
-  right: 10px; /* Alinea el icono a la derecha */
-  top: 50%; /* Centra verticalmente */
-  transform: translateY(-50%); /* Ajuste fino para centrar verticalmente */
-  color: #3f3f3f; /* Color del icono */
-  font-size: 20px; /* Tamaño del icono */
-  padding-right: 10px;
-}
-
-.lupa-icon{
-  position: absolute; /* Para colocar el ícono dentro del input */
-  left: 15px; /* Coloca el ícono a la izquierda dentro del input */
-  top: 50%; 
-  transform: translateY(-50%);
-  color: #3f3f3f; 
-  font-size: 20px;
-}
-
 .icons-container{
   display: flex;
-  background-color: transparent;
-  justify-content: right;
-  align-items: center;
+  margin-left: auto;
   gap:5px;
-  width: 300px;
-  height: 50px;
-  right: 5px;
 }
 
 .icons-container i {

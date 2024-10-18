@@ -34,6 +34,11 @@ export class MaterialService {
     return this.http.get(url);
   }
 
+  createFolder(data:any){
+    const url = this.url + '/create_folder/'
+    return this.http.post(url, data);
+  }
+
   updateEstado(id: string, dataState: any) {
     const url = this.url + '/update/estado/' + id
     return this.http.put(url, dataState);
@@ -43,8 +48,6 @@ export class MaterialService {
     const url = this.url + '/update/state/' + id
     return this.http.put(url, dataState);
   }
-
-
 
   //*? de aca para abajo esta todo relacionado con los Usuarios, deberiamos Colocarlo en otro servicio 
   //? apartado que sea por ejemplo UsuarioService

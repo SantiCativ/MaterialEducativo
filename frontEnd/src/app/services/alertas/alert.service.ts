@@ -17,6 +17,26 @@ export class AlertService {
     });
   }
 
+  async form(messageDefault: string, title: string, label: string, warning: string): Promise<string | undefined>{
+    const inputValue = messageDefault;
+    const { value: name } = await Swal.fire({
+      title: title,
+      input: "text",
+      inputLabel: label,
+      inputValue,
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (!value) {
+          return warning;
+        }
+        //Retornar null le indica a SweetAlert2 que no hay error y que todo está bien.
+        return null;
+      }
+      
+    });
+    return name;
+  }
+
   error(message: string, title?: string) {
     Swal.fire({
       title: title || 'Error',
