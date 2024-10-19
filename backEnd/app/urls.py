@@ -9,7 +9,7 @@ router= routers.DefaultRouter()
 urlpatterns= [
     path('',include(router.urls)),
     path('registro/', CreateUser.as_view(),), 
-    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),#esta vista recibe el usuario y contraseña y si
+    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('documents_create/',CreateDocument.as_view(),),
     path('update/<int:pk>/',UpdatedUser.as_view()),
     path('update/estado/<int:pk>',UpdatedEstado.as_view()),

@@ -7,4 +7,16 @@ from rest_framework.permissions import IsAuthenticated
 class GetDepartamentos(generics.ListAPIView):
      queryset=Departamento.objects.all()
      serializer_class=DepartamentoSerializer
-    
+     
+class GetCarreras(generics.ListAPIView):
+     queryset=Carrera.objects.all()
+     serializer_class=CarreraSerializer
+     
+class GetMaterias(generics.ListAPIView):
+     queryset=Materia.objects.all()
+     serializer_class=MateriaSerializer
+     
+# class GetCarreras(generics.ListAPIView):
+#      queryset=Carrera.objects.all()
+#      serializer_class=CarreraSerializer
+     
