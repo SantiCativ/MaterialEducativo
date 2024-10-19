@@ -9,18 +9,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgxPaginationModule} from 'ngx-pagination';
 
 //componentes
-import { HomeComponent } from './pages/home/home.component'; 
+
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { TopbarComponent } from './pages/admin-panel/components/topbar/topbar.component'; 
 import { SidebarComponent } from './pages/admin-panel/components/sidebar/sidebar.component';
-import { FoldersComponent } from './pages/home/components/table/components/folders/folders.component';
-import { DocumentsComponent } from './pages/home/components/table/components/documento/documents.component';
-import { FiltersComponent } from './pages/home/components/table/components/filters/filters/filters.component';
-
 import { UsersTableComponent } from './pages/admin-panel/components/users-table/users-table.component'; 
 import { DocumentsTableComponent } from './pages/admin-panel/components/documents-table/documents-table.component'; 
 import { LoginComponent } from './pages/login/login.component';
+
+//home
+import { HomeComponent } from './pages/home/home.component'; 
+import { PaginaPrincipalComponent } from './pages/home/components/pagina-principal/pagina-principal.component';
+import { DocumentsComponent } from './pages/home/components/pagina-principal/components/documento/documents.component';
+import { FiltersComponent } from './pages/home/components/pagina-principal/components/filters/filters.component';
+import { SidebarComponentHome } from './pages/home/components/sidebar/sidebar.component';
 import { NavbarComponent } from './pages/home/components/navbar/navbar.component';
+import { FoldersComponent } from './pages/home/components/pagina-principal/components/folders/folders.component';
+import { FavoritoComponent } from './pages/home/components/favorito/favorito.component';
+import { RecientesComponent } from './pages/home/components/recientes/recientes.component';
+import { MiUnidadComponent } from './pages/home/components/mi-unidad/mi-unidad.component';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
@@ -34,8 +41,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-import { SidebarComponentHome } from './pages/home/components/sidebar/sidebar.component';
-import { TableComponentHome } from './pages/home/components/table/table.component';
 
 @NgModule({
   
@@ -54,8 +59,11 @@ import { TableComponentHome } from './pages/home/components/table/table.componen
     FoldersComponent,
     DocumentsComponent,
     SidebarComponentHome,
-    TableComponentHome,
-    FiltersComponent
+    FiltersComponent,
+    PaginaPrincipalComponent,
+    MiUnidadComponent,
+    FavoritoComponent,
+    RecientesComponent
   ],
   imports: [
     BrowserModule,
@@ -73,10 +81,6 @@ import { TableComponentHome } from './pages/home/components/table/table.componen
     MatSortModule,
     MatPaginatorModule,
     MatIconModule,
-
-    
-   
-  
   ],
   providers: [],
   bootstrap: [AppComponent]
