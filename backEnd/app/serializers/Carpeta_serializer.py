@@ -8,6 +8,10 @@ class CarpetaSerializer(serializers.ModelSerializer):
         model = Carpeta
         fields = ['id', 'nombre', 'created_at', 'updated_at', 'subcarpeta']
         
+class Folders(serializers.ModelSerializer):
+    class Meta:
+        model=Carpeta
+        fields='__all__'
         
 class newFolder(serializers.ModelSerializer):
     class Meta:
